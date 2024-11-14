@@ -1,0 +1,19 @@
+"NamesCOL","Eticol","Bloc","Nom_Bloc","Inicial_Pregunta","Pregunta","Respostes","Columnes","Rephrase","Colcurt","Object","PreguntaG","Tipus","PackIni","PackFi","nCols","nBlocs","TipusDescriptiva"
+NA,NA,1,"Aspectes Generals",NA,NA,NA,NA,NA,NA,"Bloc",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,"AG1","Informació clients",NA,NA,"AG1 .clients",NA,"Qüestio","Informació clients","Grid",2,6,4,NA,"a "
+NA,NA,NA,NA,NA,NA,"Files","Columnes",NA,NA,"Separador",NA,NA,NA,NA,NA,NA,NA
+2,NA,NA,NA,"AG1","Informació clients [casa]","casa","1.molt bona","casa","1.mb","Modalitat",NA,NA,NA,NA,NA,NA,NA
+3,NA,NA,NA,"AG1","Informació clients [alimentacio]","alimentacio","2.bona","alim","2.b","Modalitat",NA,NA,NA,NA,NA,NA,NA
+4,NA,NA,NA,"AG1","Informació clients [salut]","salut","3.dolenta","salut","3.dol","Modalitat",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,"4.molt dolenta",NA,"4.md","Modalitat",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Separador",NA,NA,NA,NA,NA,NA,NA
+5,NA,NA,NA,"AG2","satisfaccio servei",NA,NA,"AG2.satis",NA,"Qüestio",NA,"Simple Response",NA,NA,NA,NA,"b"
+NA,5,NA,NA,NA,NA,"alta",NA,"alta",NA,"Modalitat",NA,NA,NA,NA,NA,NA,NA
+NA,5,NA,NA,NA,NA,"baixa",NA,"baixa",NA,"Modalitat",NA,NA,NA,NA,NA,NA,NA
+NA,5,NA,NA,NA,NA,"normal",NA,"normal",NA,"Modalitat",NA,NA,NA,NA,NA,NA,NA
+NA,NA,2,"Aspectes tècnics",NA,NA,NA,NA,NA,NA,"Bloc",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,"At1","Millores",NA,NA,"At1 .millores",NA,"Qüestio","Millores","Grid",6,9,3,NA,"a "
+NA,NA,NA,NA,NA,NA,"Files","Columnes",NA,NA,"Separador",NA,NA,NA,NA,NA,NA,NA
+6,NA,NA,NA,"At1","Millores [ball]","ball","1.moltes","ball","1.moltes","Modalitat",NA,NA,NA,NA,NA,NA,NA
+7,NA,NA,NA,"At1","Millores [orquestra]","orquestra","2.poques","orquestra","2.poques","Modalitat",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,"3.cap",NA,"3.cap","Modalitat",NA,NA,NA,NA,NA,NA,NA

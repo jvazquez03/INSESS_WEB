@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista Dinámica</h1>
+    <input type="text" id="itemInput" placeholder="Añadir nuevo elemento">
+    <button id="addButton">Add</button>
+
+    <ul id="itemList"></ul>
+
+    <script>
+        const addButton = document.getElementById('addButton');
+        const itemInput = document.getElementById('itemInput');
+        const itemList = document.getElementById('itemList');
+
+        // Función para cargar la lista desde localStorage
+        function loadItems() {
+            const items = JSON.parse(localStorage.getItem('items')) || [];
+            items.forEach(item => addItemToList(item));
+        }
+
+        // Función para añadir un elemento a la lista
+        function addItemToList(itemText) {
+            const li = document.createElement('li');
+            li.textContent = itemText;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function() {
+                itemList.removeChild(li);
+                removeItemFromStorage(itemText);
+            });
+
+            li.appendChild(removeButton);
+            itemList.appendChild(li);
+        }
+
+        // Función para guardar un elemento en localStorage
+        function saveItemToStorage(itemText) {
+            const items = JSON.parse(localStorage.getItem('items')) || [];
+            items.push(itemText);
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+
+        // Función para eliminar un elemento de localStorage
+        function removeItemFromStorage(itemText) {
+            let items = JSON.parse(localStorage.getItem('items')) || [];
+            items = items.filter(item => item !== itemText);
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+
+        // Cargar la lista al iniciar la página
+        loadItems();
+
+        addButton.addEventListener('click', function() {
+            const itemText = itemInput.value.trim();
+            if (itemText !== '') {
+                addItemToList(itemText);
+                saveItemToStorage(itemText); // Guardar el nuevo elemento en localStorage
+                itemInput.value = ''; // Limpiar el campo de entrada
+            }
+        });
+    </script>
+
+</body>
+</html>
