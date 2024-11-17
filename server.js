@@ -36,6 +36,13 @@ mongoose.connect(mongoURI, {
   });
 
 
+const googleCloudCredentials = process.env.GOOGLE_CLOUD_CREDENTIALS;
+
+if (!googleCloudCredentials) {
+    console.error('Las credenciales de Google Cloud no están configuradas.');
+    process.exit(1);
+}
+
 // Esquema de usuario
 const User = require('./models/User');
 const Form = require('./models/Forms');

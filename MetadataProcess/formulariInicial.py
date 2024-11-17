@@ -1,6 +1,8 @@
 import re
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+import os
+import json
 
 import pandas as pd
 
@@ -9,16 +11,20 @@ warnings.filterwarnings("ignore", category=FutureWarning, message="Pyarrow.*")
 
  
 FORM_TITLE = 'AUTOMATIC FORM GENERATION USING GOOGLE FORMS API'
+GOOGLE_CREDENTIALS_JSON = os.getenv('GOOGLE_CREDENTIALS_JSON')  # La variable de entorno con el JSON de credenciales
 
 SCOPES = ['https://www.googleapis.com/auth/forms', 'https://www.googleapis.com/auth/drive.file']
 DISCOVERY_DOC = "https://forms.googleapis.com/$discovery/rest?version=v1"
  
 SERVICE_ACCOUNT_FILE = '/home/patati/Escritorio/html_version/MetadataProcess/credentials.json'
 
-creds = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE,
-    scopes=SCOPES
-)
+
+if GOOGLE_CREDENTIALS_JSON:
+    creds = service_account.Credentials.from_service_account_info(
+        json.loads(GOOGLE_CREDENTIALS_JSON), scopes=SCOPES)
+else:
+    raise ValueError("Google credentials JSON not found in environment variables.")
+
  
 forms_service = build('forms', 'v1', credentials=creds)
  
