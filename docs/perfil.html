@@ -423,12 +423,16 @@
  
         const csvContent = csvRows.join('\n');
 
-        // Crear un enlace para descargar el CSV
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        link.click();
+        fetch('/save-csv-file', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ csvContent, fileName })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error al guardar el archivo CSV:', error));
     }
 
     function createQuestionCSV(filename, data, headers) {
@@ -465,12 +469,16 @@
  
         const csvContent = csvRows.join('\n');
 
-        // Crear un enlace para descargar el CSV
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        link.click();
+        fetch('/save-csv-file', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ csvContent, fileName })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error al guardar el archivo CSV:', error)); 
     }
 
 
