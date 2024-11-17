@@ -86,7 +86,7 @@
             });
 
             if (response.ok) {
-                window.location.href = '/docs/login';
+                window.location.href = '/docs/login.html';
             } else {
                 const errorText = await response.text();
                 alert('Error al registrar el usuario: ' + errorText);

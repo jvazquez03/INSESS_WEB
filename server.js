@@ -1,14 +1,13 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require('express'); 
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
 const session = require('express-session'); // Importar express-session
+const mongoose = require('mongoose');
 
 const app = express();
-
-// Middleware para parsear el cuerpo de las solicitudes
+ 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -23,10 +22,19 @@ app.use(session({
 // Servir archivos estáticos desde la carpeta actual
 app.use(express.static(path.join(__dirname)));
 
-// Conectar a MongoDB
-mongoose.connect('mongodb://localhost:27017/usuarios')
-    .then(() => console.log("Conexión a MongoDB exitosa"))
-    .catch(err => console.error("Error al conectar a MongoDB:", err));
+const mongoURI = "mongodb+srv://joanvazquez:28112002@cluster0.nipyo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 50000 // Aumenta el tiempo de espera a 50 segundos
+  })
+  .then(() => {
+    console.log('Conexión a MongoDB exitosa');
+  })
+  .catch(err => {
+    console.error('Error al conectar a MongoDB:', err);
+  });
+
 
 // Esquema de usuario
 const User = require('./models/User');
