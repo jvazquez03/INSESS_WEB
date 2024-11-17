@@ -544,32 +544,23 @@ app.post('/add-url', async (req, res) => {
 });
 
 app.post('/save-csv-file', (req, res) => {
-    const { data, fileName } = req.body;
-  
-    // Validar que los datos y el nombre de archivo están presentes
-    if (!data || !fileName) {
-      return res.status(400).json({ error: 'Se requieren los datos y el nombre del archivo' });
+    const { csvContent, fileName } = req.body;
+
+    if (!csvContent || !fileName) {
+        return res.status(400).json({ error: 'Se requieren los datos CSV y el nombre del archivo' });
     }
-  
-    // Convertir los datos JSON a CSV
-    let csvData;
-    try {
-      csvData = json2csv(data);
-    } catch (err) {
-      return res.status(500).json({ error: 'Error al convertir los datos a CSV' });
-    }
-  
-    // Ruta donde se guardará el archivo
+
+    // Ruta donde se guardará el archivo CSV
     const filePath = path.join(__dirname, 'csv_files', `${fileName}.csv`);
-  
+
     // Guardar el archivo CSV
-    fs.writeFile(filePath, csvData, (err) => {
-      if (err) {
-        return res.status(500).json({ error: 'Error al guardar el archivo CSV' });
-      }
-      res.status(200).json({ message: 'Archivo CSV guardado correctamente', filePath });
+    fs.writeFile(filePath, csvContent, (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al guardar el archivo CSV' });
+        }
+        res.status(200).json({ message: 'Archivo CSV guardado correctamente', filePath });
     });
-  });
+});
 
 
 // Iniciar el servidor en el puerto 3000
