@@ -167,10 +167,6 @@
     </main>
 
     <script>
-
-        const fs = require('fs');
-        const path = require('path');
-
         let objects = [];
         let blocks = [];
         let questionBlock = [];  
@@ -416,7 +412,7 @@
     }
 
 
-    function createBlockCSV(filename, data, headers, directory = './csv_files') {
+    function createBlockCSV(filename, data, headers) {
         const csvRows = [];  
 
         csvRows.push(headers.join(','));
@@ -427,34 +423,33 @@
  
         const csvContent = csvRows.join('\n');
 
-        // Guardar el archivo en el directorio especificado
-        const filePath = path.join(directory, filename);
-        fs.writeFileSync(filePath, csvContent, 'utf8');
-
-        console.log(`Archivo CSV guardado en ${filePath}`);
+        // Crear un enlace para descargar el CSV
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
     }
 
-    function createQuestionCSV(filename, data, headers, directory = './csv_files') {
-        const csvRows = [];
+    function createQuestionCSV(filename, data, headers) {
+        const csvRows = [];  
 
-        // Agregar la fila de encabezados
         csvRows.push(headers.join(','));
 
         const headerMapping = {
-            'Numero_del_Bloc': 'bloc',
-            'Numero_de_Pregunta': 'title',
-            'Tipus': 'type',
-            'Pregunta': 'title',
-            'Pregunta_abreujada': 'rephrase',
-            'Respostes': 'respostes',
-            'Columnes': 'columnes',
-            'Abv_Respostes': 'abv_respostes',
-            'Abv_Columnes': 'abv_columnes',
+            'Numero_del_Bloc': 'bloc', 
+            'Numero_de_Pregunta': 'title', 
+            'Tipus': 'type', 
+            'Pregunta': 'title',  
+            'Pregunta_abreujada': 'rephrase', 
+            'Respostes': 'respostes', 
+            'Columnes': 'columnes', 
+            'Abv_Respostes': 'abv_respostes', 
+            'Abv_Columnes': 'abv_columnes', 
         };
 
-        // Crear filas con los datos
-        for (const bloc of data) {
-            for (const question of bloc) {
+        for (bloc of data){
+            for (question of bloc) { 
                 console.log(question.title);
 
                 const row = headers.map(header => {
@@ -463,19 +458,19 @@
                 });
 
                 // Añadir la fila al CSV
-                console.log("Fila generada:", row.join(','));
+                console.log("Fila generada:", row.join(',')); 
                 csvRows.push(row.join(','));
             }
         }
-
-        // Crear el contenido CSV
+ 
         const csvContent = csvRows.join('\n');
 
-        // Guardar el archivo en el directorio especificado
-        const filePath = path.join(directory, filename);
-        fs.writeFileSync(filePath, csvContent, 'utf8');
-
-        console.log(`Archivo CSV guardado en ${filePath}`);
+        // Crear un enlace para descargar el CSV
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
     }
 
 
