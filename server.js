@@ -35,16 +35,16 @@ const Block = require("./models/Block");
 const Question = require("./models/Question");
  
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html')); // Sirve el formulario de registro
+    res.sendFile(path.join(__dirname, 'docs', 'login.html')); // Sirve el formulario de registro
 });
 
 // Ruta para servir la página de inicio de sesión (login.html)
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html')); // Sirve el formulario de login
+    res.sendFile(path.join(__dirname, 'docs', 'login.html')); // Sirve el formulario de login
 });
  
 app.get('/forms', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'forms.html')); // Sirve el formulario de login
+    res.sendFile(path.join(__dirname, 'docs', 'forms.html')); // Sirve el formulario de login
 });
 
 // Ruta para registrar un nuevo usuario
