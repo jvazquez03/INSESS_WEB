@@ -407,7 +407,7 @@
         });
  
         await executeRScript();
-        await executePythonScript(formId); 
+        // await executePythonScript(formId); 
         await renderObjects();
     }
 
@@ -436,12 +436,12 @@
 
         csvRows.push(headers.join(','));
 
-        const headerMapping = {
+        const headerMapping = { 
             'Numero_del_Bloc': 'bloc', 
-            'Numero_de_Pregunta': 'title', 
+            'Bloc': 'bloc',
             'Tipus': 'type', 
             'Pregunta': 'title',  
-            'Pregunta_abreujada': 'rephrase', 
+            'Rephrase': 'rephrase', 
             'Respostes': 'respostes', 
             'Columnes': 'columnes', 
             'Abv_Respostes': 'abv_respostes', 
