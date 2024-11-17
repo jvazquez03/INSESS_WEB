@@ -412,7 +412,7 @@
     }
 
 
-    function createBlockCSV(filename, data, headers) {
+    function createBlockCSV(fileName, data, headers) {
         const csvRows = [];  
 
         csvRows.push(headers.join(','));
@@ -435,7 +435,7 @@
         .catch(error => console.error('Error al guardar el archivo CSV:', error));
     }
 
-    function createQuestionCSV(filename, data, headers) {
+    function createQuestionCSV(fileName, data, headers) {
         const csvRows = [];  
 
         csvRows.push(headers.join(','));
