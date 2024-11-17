@@ -10,8 +10,7 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning, message="Pyarrow.*")
 
  
-FORM_TITLE = 'AUTOMATIC FORM GENERATION USING GOOGLE FORMS API'
-GOOGLE_CREDENTIALS_JSON = os.getenv('GOOGLE_CREDENTIALS_JSON')  # La variable de entorno con el JSON de credenciales
+FORM_TITLE = 'AUTOMATIC FORM GENERATION USING GOOGLE FORMS API' 
 
 SCOPES = ['https://www.googleapis.com/auth/forms', 'https://www.googleapis.com/auth/drive.file']
 DISCOVERY_DOC = "https://forms.googleapis.com/$discovery/rest?version=v1"
@@ -19,11 +18,14 @@ DISCOVERY_DOC = "https://forms.googleapis.com/$discovery/rest?version=v1"
 SERVICE_ACCOUNT_FILE = '/home/patati/Escritorio/html_version/MetadataProcess/credentials.json'
 
 
-if GOOGLE_CREDENTIALS_JSON:
-    creds = service_account.Credentials.from_service_account_info(
-        json.loads(GOOGLE_CREDENTIALS_JSON), scopes=SCOPES)
-else:
-    raise ValueError("Google credentials JSON not found in environment variables.")
+credentials_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS_JSON')
+creds_dict = json.loads(credentials_json)
+
+# Crea las credenciales a partir del diccionario
+creds = service_account.Credentials.from_service_account_info(
+    creds_dict,
+    scopes=SCOPES
+)
 
  
 forms_service = build('forms', 'v1', credentials=creds)
