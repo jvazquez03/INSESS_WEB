@@ -96,7 +96,7 @@
 
             if (response.ok && result.success) {
                 localStorage.setItem('currentUser', result.userId); 
-                window.location.href = "/perfil.html";
+                window.location.href = "/docs/perfil.html";
             } else {
                 // Mostrar mensaje de error
                 document.getElementById("error-message").textContent = result.message || 'Error en el inicio de sesión';
@@ -118,7 +118,7 @@
         <div id="error-message" class="error-message"></div> <!-- Mensaje de error aquí -->
 
         <div class="register-link">
-            <p>¿No tienes una cuenta? <a href="/web.html">Regístrate</a></p>
+            <p>¿No tienes una cuenta? <a href="/docs/index.html">Regístrate</a></p>
         </div>
     </form>
 </body>

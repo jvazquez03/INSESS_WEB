@@ -185,14 +185,14 @@
                         renderObjects();
                     } else {
                         console.error("No se pudo obtener la información del usuario");
-                        window.location.href = "/login.html"; // Redirige si no está autenticado
+                        window.location.href = "/docs/login.html"; // Redirige si no está autenticado
                     }
                 } catch (error) {
                     console.error("Error al obtener la información del usuario:", error);
                 }
             } else {
                 console.error("No se encontró el ID del usuario en localStorage.");
-                window.location.href = "/login.html"; // Redirige si no se encuentra el ID
+                window.location.href = "/docs/login.html"; // Redirige si no se encuentra el ID
             }
         });
 
@@ -235,7 +235,7 @@
 
         function logout() {
             localStorage.removeItem("currentUser");
-            window.location.href = "/login.html";
+            window.location.href = "/docs/login.html";
         }
 
         async function addUserForm() {
@@ -294,7 +294,7 @@
 
         async function editForm(formId) { 
             localStorage.setItem('currentForm', formId);
-            window.location.href = "/form.html";
+            window.location.href = "/docs/form.html";
         }
 
 

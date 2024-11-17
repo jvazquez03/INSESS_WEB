@@ -86,7 +86,7 @@
             });
 
             if (response.ok) {
-                window.location.href = '/login';
+                window.location.href = '/docs/login';
             } else {
                 const errorText = await response.text();
                 alert('Error al registrar el usuario: ' + errorText);
@@ -105,7 +105,7 @@
 
         <button type="submit">Registrar</button>
         <div class="login-link">
-            <p>¿Ya tienes cuenta? <a href="/login.html">Accede</a></p>
+            <p>¿Ya tienes cuenta? <a href="/docs/login.html">Accede</a></p>
         </div>
     </form> 
 </body>

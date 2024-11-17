@@ -210,14 +210,14 @@
                     document.getElementById("username").textContent = userInfo.user.username;
                 } else {
                     console.error("No se pudo obtener la información del usuario");
-                    window.location.href = "/login.html";
+                    window.location.href = "/docs/login.html";
                 }
             } catch (error) {
                 console.error("Error al obtener la información del usuario:", error);
             }
         } else {
             console.error("No se encontró el ID del usuario en localStorage.");
-            window.location.href = "/login.html";
+            window.location.href = "/docs/login.html";
         }
 
         renderObjects();
@@ -387,7 +387,7 @@
     function createQuestion(blockItem) { 
         const blockId = blockItem.dataset.blockId;
         localStorage.setItem('currentBlock', blockId); 
-        window.location.href = "/question.html";
+        window.location.href = "/docs/question.html";
     }
 
     function delBlock(blockItem) {  
@@ -414,7 +414,7 @@
 
     function logout() {
         localStorage.removeItem("currentUser");
-        window.location.href = "/login.html";
+        window.location.href = "/docs/login.html";
     }
 
     
@@ -490,7 +490,7 @@
     }
 
     function goBack(){ 
-        window.location.href = "/perfil.html";
+        window.location.href = "/docs/perfil.html";
     }
 
 
