@@ -6,7 +6,7 @@ library(stringr)
 ##################################################################################################################################
 
 
-setwd("/home/patati/Escritorio/html_version/MetadataProcess")
+setwd("../MetadataProcess")
 
 blocs <- read.csv("blocs.csv")
 blocs <- data.frame(blocs)
@@ -297,7 +297,7 @@ if (nrow(data_extracted) != 0){
 }
 metadata <- metadata[, initial_order] 
 
-setwd("/home/patati/Escritorio/html_version/MetadataProcess")
+setwd("../csv_files")
 nombre_archivo <- "MetaData_Obtained.csv" 
 write.csv(metadata, file = nombre_archivo, row.names = FALSE)
 
