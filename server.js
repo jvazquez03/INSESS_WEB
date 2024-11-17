@@ -40,11 +40,11 @@ app.get('/', (req, res) => {
 
 // Ruta para servir la página de inicio de sesión (login.html)
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login.html')); // Sirve el formulario de login
+    res.sendFile(path.join(__dirname, 'views', 'login.html')); // Sirve el formulario de login
 });
  
 app.get('/forms', (req, res) => {
-    res.sendFile(path.join(__dirname, 'forms.html')); // Sirve el formulario de login
+    res.sendFile(path.join(__dirname, 'views', 'forms.html')); // Sirve el formulario de login
 });
 
 // Ruta para registrar un nuevo usuario
