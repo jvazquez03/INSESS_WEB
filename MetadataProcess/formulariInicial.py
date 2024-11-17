@@ -170,7 +170,7 @@ def create_new_question(preg, tipus, numericalType, respostes, columnes):
 
 
  
-ruta_excel = '/home/patati/Escritorio/html_version/MetadataProcess/MetaData_Obtained.csv'
+ruta_excel = '../csv_files/MetaData_Obtained.csv'
  
 data_frame = pd.read_csv(ruta_excel)
 respostes = []
