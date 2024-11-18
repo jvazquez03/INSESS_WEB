@@ -413,7 +413,7 @@
 
 
     function createBlockCSV(filename, data, headers) {
-        const csvRows = [];  
+        csvRows = [];  
 
         csvRows.push(headers.join(','));
 
@@ -432,7 +432,7 @@
     }
 
     function createQuestionCSV(filename, data, headers) {
-        const csvRows = [];  
+        csvRows = [];  
 
         csvRows.push(headers.join(','));
 
@@ -440,7 +440,7 @@
             'Numero_del_Bloc': 'bloc', 
             'Bloc': 'bloc',
             'Tipus': 'type', 
-            'Pregunta': 'title',  
+            'Nom_Pregunta': 'title',  
             'Rephrase': 'rephrase', 
             'Respostes': 'respostes', 
             'Columnes': 'columnes', 
