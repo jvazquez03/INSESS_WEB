@@ -7,7 +7,7 @@ const session = require('express-session'); // Importar express-session
 const mongoose = require('mongoose');
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'docs')));
+app.use(express.static(path.join(__dirname, 'public')));
  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,9 +19,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } // Cambiar a true si usas HTTPS
 }));
-
-// Servir archivos estáticos desde la carpeta actual
-app.use(express.static(path.join(__dirname)));
 
 const mongoURI = "mongodb+srv://joanvazquez:28112002@cluster0.nipyo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 mongoose.connect(mongoURI, {
@@ -44,16 +41,16 @@ const Block = require("./models/Block");
 const Question = require("./models/Question");
  
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'docs', 'login.html')); // Sirve el formulario de registro
+    res.sendFile(path.join(__dirname, 'public/docs', 'login.html')); // Sirve el formulario de registro
 });
 
 // Ruta para servir la página de inicio de sesión (login.html)
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'docs', 'login.html')); // Sirve el formulario de login
+    res.sendFile(path.join(__dirname, 'public/docs', 'login.html')); // Sirve el formulario de login
 });
  
 app.get('/forms', (req, res) => {
-    res.sendFile(path.join(__dirname, 'docs', 'forms.html')); // Sirve el formulario de login
+    res.sendFile(path.join(__dirname, 'public/docs', 'forms.html')); // Sirve el formulario de login
 });
 
 // Ruta para registrar un nuevo usuario
@@ -488,7 +485,7 @@ app.post('/run-r-script', (req, res) => {
 
 app.post('/run-python-script', (req, res) => {
     const scriptPath = path.join(__dirname, 'MetadataProcess', 'formulariInicial.py'); // Cambia la ruta según tu archivo
-    const command = `python3 ${scriptPath}`;
+    const command = `python ${scriptPath}`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
