@@ -57,19 +57,28 @@ app.get('/forms', (req, res) => {
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
 
-    try { 
+    try {
+        // Verificar si el nombre de usuario ya existe
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            // Si el usuario ya existe, enviamos un mensaje de error
+            return res.status(400).send('El nombre de usuario ya está en uso');
+        }
+
+        // Crear un nuevo usuario si el nombre no existe
         const newUser = new User({ username, password });
- 
         await newUser.save();
         
         console.log(`Usuario registrado: ${username}`);
- 
+        
+        // Redirigir al login después de registrarse
         res.redirect('/login');
     } catch (err) {
         console.error('Error al registrar el usuario:', err);
         res.status(500).send('Error al registrar el usuario');
     }
 });
+
 
 
 app.post('/login', async (req, res) => {
