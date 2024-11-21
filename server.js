@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
 const session = require('express-session'); // Importar express-session
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -543,6 +543,15 @@ app.post('/add-url', async (req, res) => {
 
 
 // Iniciar el servidor en el puerto 3000
-app.listen(3000, () => {
-    console.log('Servidor corriendo en el puerto 3000');
-});
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor iniciado en http://localhost:${PORT}`);
+    const appUrl = 'http://localhost:3000';
+    exec(`start ${appUrl}`, (err, stdout, stderr) => {
+        if (err) {
+          console.error('Error al abrir el navegador:', err);
+          return;
+        }
+        console.log('Navegador abierto correctamente');
+      });
+  });

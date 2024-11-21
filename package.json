@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "bin": "server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,7 +17,8 @@
     "express": "^4.21.1",
     "express-session": "^1.18.1",
     "mongodb": "^6.10.0",
-    "mongoose": "^8.8.1"
+    "mongoose": "^8.8.1",
+    "open": "^10.1.0"
   },
   "directories": {
     "doc": "docs"
@@ -29,5 +31,19 @@
     "url": "https://github.com/jvazquez03/INSESS_WEB/issues"
   },
   "homepage": "https://github.com/jvazquez03/INSESS_WEB#readme",
-  "description": ""
+  "description": "",
+  "pkg": {
+    "assets": [
+      "public/docs/*",
+      "public/images/*"
+    ],
+    "targets": [
+      "node16-win-x64",
+      "node16-linux-x64",
+      "node16-macos-x64"
+    ],
+    "outputPath": "dist", 
+    "name": "INSESS_Desktop",
+    "icon": "public/icons/INSESS_icon.ico"
+  }
 }
