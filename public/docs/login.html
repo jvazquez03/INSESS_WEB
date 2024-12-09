@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <style>
+        body {
+            background-image: url('/images/metadata.png'); /* Asegúrate de que la imagen se llame así y esté en la misma carpeta */
+            background-size: cover; /* La imagen cubre toda la pantalla */
+            background-position: center; /* La imagen se centra */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura de la ventana */
+            margin: 0; /* Eliminar márgenes */
+            color: white; /* Color del texto */
+            flex-direction: column; /* Alinear elementos verticalmente */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para el formulario */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra del formulario */
+            display: flex;
+            flex-direction: column; /* Alinear elementos del formulario verticalmente */
+            gap: 15px; /* Espacio entre los elementos del formulario */
+        }
+
+        label {
+            margin-bottom: 5px; /* Espacio debajo de las etiquetas */
+        }
+
+        input {
+            padding: 10px; /* Espaciado interno de los campos de entrada */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados para los campos de entrada */
+        }
+
+        button {
+            padding: 10px; /* Espaciado interno del botón */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados para el botón */
+            background-color: #007bff; /* Color de fondo del botón */
+            color: white; /* Color del texto del botón */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            font-size: 16px; /* Tamaño de la fuente del botón */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Color del botón al pasar el mouse */
+        }
+        
+        .error-message {
+            color: red; /* Color para el mensaje de error */
+            margin-top: 10px; /* Espacio encima del mensaje de error */
+        }
+
+        .register-link {
+            margin-top: 10px; /* Espacio encima del enlace */
+            text-align: center; /* Centrar el enlace */
+        }
+
+        .register-link a {
+            color: #007bff; /* Color del enlace */
+            text-decoration: none; /* Sin subrayado */
+        }
+
+        .register-link a:hover {
+            text-decoration: underline; /* Subrayado al pasar el mouse */
+        }
+    </style>
+    <script>
+        async function loginUser(event) {
+            event.preventDefault(); // Prevenir recarga de la página
+
+            // Obtener los valores del formulario
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            // Enviar datos al servidor
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                localStorage.setItem('currentUser', result.userId); 
+                window.location.href = "/docs/perfil.html";
+            } else {
+                // Mostrar mensaje de error
+                document.getElementById("error-message").textContent = result.message || 'Error en el inicio de sesión';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Inicio de Sesión</h1>
+    <form onsubmit="loginUser(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Iniciar Sesión</button>
+        
+        <div id="error-message" class="error-message"></div> <!-- Mensaje de error aquí -->
+
+        <div class="register-link">
+            <p>¿No tienes una cuenta? <a href="/docs/index.html">Regístrate</a></p>
+        </div>
+    </form>
+</body>
+</html>

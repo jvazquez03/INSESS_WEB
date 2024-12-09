@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Bloques y Preguntas</title>
+    <style>
+        body {
+            background-image: url('/images/metadata.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            color: black;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: rgba(88, 97, 194, 0.7);
+            align-items: center;
+            height: 50px;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-info img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            color: aqua;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            height: 50px;
+        }
+
+        .scrollable-container {
+            background-color: rgb(169, 181, 247);
+            height: 600px;
+            overflow-y: auto; 
+            padding: 10px; 
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .block-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .block-item {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #e9e9e9;
+            border: 1px solid #ccc; /* Borde para los bloques */
+        }
+
+        .question-list {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-top: 10px; 
+        }
+
+        .question-item {
+            padding: 8px;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+            display: flex; /* Alinea los elementos en fila */
+            justify-content: space-between; /* Espacio entre el texto y los botones */
+            align-items: center; /* Alineación vertical */
+        }
+
+        .actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .search-container { 
+            justify-content: center; 
+            position: relative;
+            height: flex;
+        }
+
+        .search-input {
+            padding: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 600px;
+            height: flex;
+        }
+
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1;
+        }
+
+        .search-result-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e9e9e9;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .search-result-item:hover {
+            background-color: #d1d1d1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-info">
+            <img src="/images/user.png" alt="Foto de perfil" id="profile-image">
+            <span id="username">Usuario</span>
+        </div>
+        <button onclick="logout()">Cerrar Sesión</button>
+    </header>
+    <main>
+        <div class="container">
+            <h1 id="formName">Gestión de Bloques y Preguntas</h1>
+            <div class="button-container">
+                <button class="button" onclick="addBlock()">Crear Bloc</button>
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar bloque...">
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
+            </div>
+            <div class="scrollable-container">
+                <ul id="blockList" class="block-list"></ul>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="sendButton" onclick="goBack()">Enrere</button>
+        </div>
+    </main>
+</body>
+
+<script>
+    let blocksDictionary = {};
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const userId = localStorage.getItem("currentUser");
+        const formId = localStorage.getItem("currentForm");
+
+        document.getElementById("searchInput").addEventListener("input", searchBlocks);
+
+
+        if (userId) {
+            try {
+                const response = await fetch(`/profile?userId=${userId}`);
+                
+                if (response.ok) {
+                    const userInfo = await response.json();  
+                    objects = userInfo.user.forms;
+                    document.getElementById("username").textContent = userInfo.user.username;
+                } else {
+                    console.error("No se pudo obtener la información del usuario");
+                    window.location.href = "/docs/login.html";
+                }
+            } catch (error) {
+                console.error("Error al obtener la información del usuario:", error);
+            }
+        } else {
+            console.error("No se encontró el ID del usuario en localStorage.");
+            window.location.href = "/docs/login.html";
+        }
+
+        renderObjects();
+    });
+
+
+    async function getBlock(blockId) {
+        try {
+            const response = await fetch(`/get-block?id=${blockId}`);
+            
+            if (response.ok) {
+                const block = await response.json();  // Parsear la respuesta JSON
+                return block;  // Retornar el bloque obtenido
+            } else {
+            throw new Error("No se pudo obtener el bloque");
+            }
+        } catch (error) {
+            console.error("Error al obtener el bloque:", error);
+            return null;  // Retorna null en caso de error
+        }
+    }
+
+
+    async function getQuestion(questionId) {
+        try {
+            const response = await fetch(`/get-question?id=${questionId}`);
+            if (response.ok) {
+                return await response.json(); // Retornar la pregunta
+            } else {
+                throw new Error("No se pudo obtener la pregunta");
+            }
+        } catch (error) {
+            console.error("Error al obtener la pregunta:", error);
+            return null; // Retornar null si ocurre un error
+        }
+    }
+
+    async function renderObjects() {
+        const formId = localStorage.getItem("currentForm");
+        if (formId){
+            const response = await fetch(`/get-form?id=${formId}`);
+                    
+            if (response.ok) {
+                const objectDetails = await response.json(); 
+        
+                blocksDictionary = await objectDetails.form.bloques.reduce(async (accPromise, blockId) => {
+                    const acc = await accPromise; 
+                    const blockData = await getBlock(blockId);  // Llamada a get-block 
+                    acc[blockId] = blockData.block.questions;  // Almacena las preguntas en el diccionario
+                    return acc;
+                }, Promise.resolve({}));
+                
+                document.getElementById("formName").textContent = objectDetails.form.title;
+            }
+        } else {
+            console.error("No se pudo obtener la información del formulario"); 
+        }
+
+        const blockList = document.getElementById("blockList");
+        blockList.innerHTML = ''; // Limpiar la lista antes de volver a renderizar
+
+        // Recorremos el diccionario de bloques
+        for (const [blockId, questions] of Object.entries(blocksDictionary)) {
+            try {
+                // Obtener el bloque completo con get-block
+                const objectBlock = await getBlock(blockId);
+
+                if (objectBlock) {
+                    // Crear el bloque en la interfaz
+                    const blockItem = document.createElement("li");
+                    blockItem.classList.add("block-item");
+                    blockItem.textContent = objectBlock.block.title;
+                    blockItem.dataset.blockId = objectBlock.block._id;
+ 
+                    // Crear contenedor para las preguntas dentro del bloque
+                    const questionList = document.createElement("ul");
+                    questionList.classList.add("question-list"); 
+
+                    // Añadir el botón para añadir preguntas
+                    const addQuestionButton = document.createElement("button");
+                    addQuestionButton.textContent = "Añadir Pregunta";
+                    addQuestionButton.onclick = () => createQuestion(blockItem);
+
+                    // Añadir el botón para eliminar preguntas
+                    const delBlockButton = document.createElement("button");
+                    delBlockButton.textContent = "Eliminar";
+                    delBlockButton.onclick = () => delBlock(blockItem);
+
+                    blockItem.appendChild(addQuestionButton);
+                    blockItem.appendChild(delBlockButton);
+                    blockItem.appendChild(questionList);
+
+                    // Añadir el bloque al contenedor
+                    blockList.appendChild(blockItem);
+
+                    // Para cada pregunta en el bloque, creamos los elementos correspondientes
+                    for (const questionId of questions) { 
+                        const objectQuestion = await getQuestion(questionId); 
+
+                        if (objectQuestion) {
+                            const questionItem = document.createElement("li");
+                            questionItem.classList.add("question-item");
+                            questionItem.textContent = objectQuestion.question.title;  // Título de la pregunta
+                    
+                            // Añadir el botón para eliminar preguntas
+                            const delQuestionButton = document.createElement("button");
+                            delQuestionButton.textContent = "Eliminar";
+                            delQuestionButton.onclick = () => deleteQuestion(objectBlock.block._id , objectQuestion.question._id);
+                            questionItem.appendChild(delQuestionButton);
+
+
+                            questionList.appendChild(questionItem);
+                            questionItem.appendChild(delQuestionButton);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Error al renderizar el bloque:", error);
+            }
+        }
+    }
+
+    function deleteQuestion(blockId, questionId) {  
+        fetch(`/remove-question-from-block/${blockId}`, {
+            method: 'POST',
+            body: JSON.stringify({ questionId }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            renderObjects();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Error al intentar eliminar la pregunta.");
+        });
+    }
+
+
+    function addBlock() {
+        const blockName = prompt("Introduce el nombre del bloque:");
+        if (blockName) {
+            const blockList = document.getElementById("blockList");
+
+            // Crear el bloque en la base de datos
+            fetch("/create-block", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title: blockName,
+                    formId: localStorage.getItem("currentForm"),
+                }),
+            })
+            .then(response => response.json())
+            .then(data => { 
+                renderObjects();
+            })
+            .catch(error => {
+                console.error("Error al crear el bloque:", error);
+            });
+        }
+    }
+
+    function createQuestion(blockItem) { 
+        const blockId = blockItem.dataset.blockId;
+        localStorage.setItem('currentBlock', blockId); 
+        window.location.href = "/docs/question.html";
+    }
+
+    function delBlock(blockItem) {  
+        const blockId = blockItem.dataset.blockId;
+        const formId = localStorage.getItem("currentForm");
+
+        // Crear la pregunta en la base de datos
+        fetch(`/remove-block-from-form/${blockId}`, {
+            method: 'POST',
+            body: JSON.stringify({ formId }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            renderObjects();
+        })
+        .catch(error => {
+            console.error("Error al eliminar el bloque:", error);
+        });
+    }
+
+
+    function logout() {
+        localStorage.removeItem("currentUser");
+        window.location.href = "/docs/login.html";
+    }
+
+    
+    async function searchBlocks() {
+        const query = document.getElementById("searchInput").value.trim();
+        const searchDropdown = document.getElementById("searchDropdown");
+
+        if (query.length > 0) {
+            try {
+                const response = await fetch(`/search-blocks?query=${encodeURIComponent(query)}`);
+                if (response.ok) {
+                    const blocks = await response.json();
+                    displaySearchResults(blocks);
+                } else {
+                    console.error("Error al buscar bloques");
+                }
+            } catch (error) {
+                console.error("Error en la búsqueda de bloques:", error);
+            }
+        } else {
+            searchDropdown.innerHTML = '';
+            searchDropdown.style.display = 'none';
+        }
+    }
+
+    function displaySearchResults(blocks) {
+        const searchDropdown = document.getElementById("searchDropdown");
+        searchDropdown.innerHTML = ''; // Limpiar resultados anteriores
+        searchDropdown.style.display = blocks.length > 0 ? 'block' : 'none';
+
+        blocks.forEach(block => {
+            const resultItem = document.createElement("div");
+            resultItem.classList.add("search-result-item");
+
+            const title = document.createElement("span");
+            title.textContent = block.title;
+
+            resultItem.appendChild(title);
+            resultItem.onclick = () => addBlockToForm(block._id);
+
+            searchDropdown.appendChild(resultItem);
+        });
+    }
+
+    function addBlockToForm(blockId) {
+        const formId = localStorage.getItem("currentForm"); 
+        fetch(`/add-block-to-form`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                formId: formId,
+                blockId: blockId
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Bloque añadido exitosamente al formulario en la base de datos.');  
+                renderObjects(); 
+            } else {
+                console.error('Error al añadir el bloque al formulario en la base de datos.');
+            }
+        })
+        .catch(error => {
+            console.error('Error de red o servidor:', error);
+        });
+
+        const searchDropdown = document.getElementById("searchDropdown");
+        searchDropdown.innerHTML = ''; // Limpia los resultados de búsqueda después de añadir
+        searchDropdown.style.display = 'none';
+        document.getElementById("searchInput").value = ''; // Limpia el campo de búsqueda
+    }
+
+    function goBack(){ 
+        window.location.href = "/docs/perfil.html";
+    }
+
+
+</script>
+</html>

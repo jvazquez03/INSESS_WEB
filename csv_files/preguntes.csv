@@ -1,0 +1,4 @@
+Numero del bloc,Numero de pregunta,Tipo de pregunta,Pregunta,Pregunta abreujada,Valores,Abreviación de valores,Puntuaciones,Abreviación de puntuaciones
+Aspectes Generals,AG1,Grid,Informació clients,clients,"['casa', 'alimentacio', 'salut']","['casa', 'alim', 'salut']","['1.molt bona', '2.bona', '3.dolenta', '4.molt dolenta']","['1.mb', '2.b', '3.dol', '4.md']"
+Aspectes Generals,AG2,Simple Response,satisfaccio servei,satis,"['alta', 'baixa', 'normal']","['alta', 'baixa', 'normal']",[],[]
+Aspectes tècnics,At1,Grid,Millores,millores,"['ball', 'orquestra']","['ball', 'orquestra']","['1.moltes', '2.poques', '3.cap']","['1.moltes', '2.poques', '3.cap']"

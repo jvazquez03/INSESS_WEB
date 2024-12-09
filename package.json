@@ -1,0 +1,49 @@
+{
+  "name": "html_version",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "bin": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "child_process": "^1.0.2",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "json2csv": "^6.0.0-alpha.2",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
+    "open": "^10.1.0"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvazquez03/INSESS_WEB.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jvazquez03/INSESS_WEB/issues"
+  },
+  "homepage": "https://github.com/jvazquez03/INSESS_WEB#readme",
+  "description": "",
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ],
+    "targets": [
+      "node16-win-x64",
+      "node16-linux-x64",
+      "node16-macos-x64"
+    ],
+    "outputPath": "dist",
+    "name": "INSESS_Desktop",
+    "icon": "public/icons/INSESS_icon.ico"
+  }
+}

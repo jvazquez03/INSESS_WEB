@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pregunta</title>
+    <style>
+        body {
+            background-image: url('/images/metadata.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            color: black;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: rgba(88, 97, 194, 0.7);
+            align-items: center;
+            height: 50px;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-info img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px; 
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .submit-group { 
+            text-align: center;
+            margin-top: auto; 
+        }
+        .title {
+            text-align: center;
+            width: 100%;
+            font-size: 20px;
+            color: aqua;
+        }
+        label {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        input, select {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border: 1px solid white;
+            width: 100%;
+            font-size: 16px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .row div {
+            width: 48%;
+        }
+        button {
+            width: auto;
+            cursor: pointer;
+        }
+        .scrollable {
+            max-height: 200px;
+            overflow-y: scroll;
+            margin-top: 10px;
+        }
+        .frame {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-info">
+            <img src="/images/user.png" alt="Foto de perfil" id="profile-image">
+            <span id="username">Usuario</span>
+        </div>
+        <button id="sendButton" onclick="goBack()">Enrere</button>
+        <button onclick="logout()">Cerrar Sesión</button>
+    </header>
+    <main>
+        <div class="title">
+            <h1 id="title">Información de la Pregunta</h1>
+        </div>
+        <div class="container">
+            <div class="form-group">
+                <label for="pregunta">Pregunta:</label>
+                <input type="text" id="pregunta">
+            </div>
+
+            <div class="form-group">
+                <label for="rephPregunta">Reph. Pregunta:</label>
+                <input type="text" id="rephPregunta">
+            </div>
+
+            <div class="form-group">
+                <label for="tipusPregunta">Tipus de Pregunta:</label>
+                <select id="tipusPregunta">
+                    <option value="Grid">Grid</option>
+                    <option value="Simple Response">Simple Response</option>
+                    <option value="Numerical">Numerical</option>
+                    <option value="Open">Open</option>
+                </select>
+            </div>
+
+            <div id="tipusSpecificos" class="form-group"></div>
+            <div class="scrollable" id="respostesContainer">
+                <!-- Dynamically populated with response inputs -->
+            </div>
+            <div class="scrollable" id="columnesContainer">
+                <!-- Dynamically populated with column inputs -->
+            </div>
+        </div>
+        <div class="footer">
+            <button id="submitButton">Crear Pregunta</button> 
+            </div>
+        </div>
+    </main>
+</body>
+
+<script> 
+    const tipusPreguntaSelect = document.getElementById('tipusPregunta');
+    const tipusSpecificosDiv = document.getElementById('tipusSpecificos');
+    const submitButton = document.getElementById('submitButton');
+    const blocSelect = document.getElementById('bloc');
+
+
+    // Event listener for question type change
+    tipusPreguntaSelect.addEventListener('change', function() {
+        const value = this.value;
+        showSpecificFields(value);
+    });
+
+    // Show specific fields based on question type
+    function showSpecificFields(tipus) {
+        let html = '';
+        if (tipus === 'Grid') {
+            html += `
+                <label>Respostes:</label>
+                <button type="button" onclick="addFrame('respostes')">Add Response</button>
+                <div id="respostesContainer" class="scrollable"></div>
+
+                <label>Columnes:</label>
+                <button type="button" onclick="addFrame('columnes')">Add Column</button>
+                <div id="columnesContainer" class="scrollable"></div>
+            `;
+        } else if (tipus === 'Simple Response') {
+            html += `
+                <label>Respostes:</label>
+                <button type="button" onclick="addFrame('respostes')">Add Response</button>
+                <div id="respostesContainer" class="scrollable"></div>
+
+            `;
+        } else if (tipus === 'Numerical') {
+            html += `
+                <label>Valor Numérico:</label>
+                <input type="number" id="numericalValue">
+            `;
+        } else if (tipus === 'Open') {
+            html += `
+                <label>Open Text:</label>
+                <textarea id="openText"></textarea>
+            `;
+        }
+        tipusSpecificosDiv.innerHTML = html;
+    }
+
+    // Add response or column input frame
+    function addFrame(type) {
+        const container = type === 'respostes' ? document.getElementById('respostesContainer') : document.getElementById('columnesContainer');
+        const frame = document.createElement('div');
+        frame.className = 'frame';
+        frame.innerHTML = `
+            <input type="text" placeholder="${type === 'respostes' ? 'Respuesta' : 'Columna'}">
+            <input type="text" placeholder="Abreviatura">
+            <button onclick="removeFrame(this)">Eliminar</button>
+        `;
+        container.appendChild(frame);
+    }
+
+    // Remove frame
+    function removeFrame(button) {
+        button.parentElement.remove();
+    }
+
+    // Submit button click event
+    submitButton.addEventListener('click', () => {
+        pregunta = document.getElementById('pregunta').value;
+        rephPregunta = document.getElementById('rephPregunta').value; 
+        tipusPregunta = document.getElementById('tipusPregunta').value;
+
+        const data = {
+            pregunta,
+            rephPregunta, 
+            tipusPregunta,
+            respostes: getInputsValues(document.getElementById('respostesContainer')),
+            columnes: getInputsValues(document.getElementById('columnesContainer')),
+            abv_respostes: getInputsValues(document.getElementById('respostesContainer')),
+            abv_columnes: getInputsValues(document.getElementById('columnesContainer')),
+        };
+ 
+        createQuestion(data);
+    });
+
+    async function getBlock(blockId) {
+        try {
+            const response = await fetch(`/get-block?id=${blockId}`);
+            
+            if (response.ok) {
+                const block = await response.json();  // Parsear la respuesta JSON
+                return block;  // Retornar el bloque obtenido
+            } else {
+            throw new Error("No se pudo obtener el bloque");
+            }
+        } catch (error) {
+            console.error("Error al obtener el bloque:", error);
+            return null;  // Retorna null en caso de error
+        }
+    }
+    
+    async function createQuestion(questionData) {  
+        const blockId = localStorage.getItem("currentBlock");
+        const blockData = await getBlock(blockId); 
+
+        fetch("/add-question", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ 
+                block: blockData,
+                data: questionData,
+            }),
+        })
+        .then(response => response.json()) 
+        .then(data => { 
+            window.location.href = "/docs/form.html";
+        })
+        .catch(error => {
+            console.error("Error al agregar la pregunta:", error);
+        });
+    }
+    
+
+    function getInputsValues(container) {
+        const inputs = container.querySelectorAll('input');
+        return Array.from(inputs).map(input => input.value);
+    }
+    
+    // Initial field display
+    showSpecificFields(tipusPreguntaSelect.value);
+
+
+    async function getBlock(blockId) {
+        try {
+            const response = await fetch(`/get-block?id=${blockId}`);
+            
+            if (response.ok) {
+                const block = await response.json();  // Parsear la respuesta JSON
+                return block;  // Retornar el bloque obtenido
+            } else {
+            throw new Error("No se pudo obtener el bloque");
+            }
+        } catch (error) {
+            console.error("Error al obtener el bloque:", error);
+            return null;  // Retorna null en caso de error
+        }
+    }
+
+    function goBack(){ 
+        window.location.href = "/docs/form.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const userId = localStorage.getItem("currentUser");
+
+        if (userId) {
+            try {
+                const response = await fetch(`/profile?userId=${userId}`);
+                
+                if (response.ok) {
+                    const userInfo = await response.json();  
+                    objects = userInfo.user.forms;
+                    document.getElementById("username").textContent = userInfo.user.username;
+                    console.log("Información del usuario:", userInfo);
+ 
+                } 
+            } catch (error) {
+                console.error("Error al obtener la información del usuario:", error);
+            }
+        } else {
+            console.error("No se encontró el ID del usuario en localStorage.");
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
