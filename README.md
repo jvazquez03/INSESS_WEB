@@ -4,21 +4,27 @@ Descripción breve del proyecto y su propósito. Explica lo que hace el proyecto
 
 ## Tabla de Contenidos
 
-1. [Instalación](#instalación)
-2. [Clonar el Repositorio](#clonar-el-repositorio)
-3. [Instalar Dependencias](#instalar-dependencias)
-4. [Uso](#uso)
-   1. [Iniciar el Servidor](#iniciar-el-servidor)
-   2. [Ejecutar Pruebas](#ejecutar-pruebas)
-5. [Tecnologías](#tecnologías)
-6. [Contribuciones](#contribuciones)
-7. [Licencia](#licencia)
+1. [Clonar el Repositorio](#clonar-el-repositorio)
+2. [Iniciar el Servidor](#iniciar-el-servidor)
 
-## Instalación
-
-### Clonar el Repositorio
+## Clonar el Repositorio
 
 Para clonar este repositorio, primero asegúrate de tener Git instalado. Para verificarlo, ejecuta:
 
-```bash
-git --version
+      git --version
+
+Una vez tengas git instalado, navega hasta el directorio local i abre un terminal en este. Una vez tengas el terminal abierto, ejecuta:
+
+      git clone https://github.com/usuario/repositorio.git
+
+El siguiente paso es instalar las dependencias. Para hacerlo navega hasta el repositorio clonado y ejecuta:
+
+      pip install -r requirements.txt
+
+## Iniciar el Servidor
+
+Para ejecutar el servidor, debes acceder al repositorio clonado y ejecutar:
+
+      node server.js
+
+      
