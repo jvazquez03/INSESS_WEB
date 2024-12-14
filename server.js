@@ -594,12 +594,12 @@ app.post('/run-python-script', async (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
-    /* const appUrl = 'http://localhost:3000';
+    const appUrl = 'http://localhost:3000';
     exec(`start ${appUrl}`, (err, stdout, stderr) => {
         if (err) {
            console.error('Error al abrir el navegador:', err);
            return;
         }
         console.log('Navegador abierto correctamente');
-    }); */
+    }); 
   });
