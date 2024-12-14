@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%; 
+            overflow: hidden; /* Esto elimina los scrolls en la ventana */
+        }
         body {
-            background-image: url('/images/metadata.png'); /* Cambia la ruta según sea necesario */
-            background-size: cover; /* Hace que la imagen cubra todo el fondo */
-            background-position: center; /* Centra la imagen */
+            background-image: url('/images/metadata.png');
+            background-size: cover;
+            background-position: center;
+            color: black;
             display: flex;
             flex-direction: column;
             height: 100vh;
-            margin: 0;
-            color: black;
         }
 
         header {
@@ -47,6 +53,7 @@
             flex-direction: column;
             flex: 1;
             padding: 20px;
+            height: 100%;
         }
 
         .top-buttons {
@@ -73,6 +80,7 @@
         .bottom-section {
             display: flex;
             justify-content: space-between; 
+            height: 100%;
         }
 
         #objectFrame {
@@ -102,13 +110,13 @@
             color: black;
         }
 
-        #imageFrame {
-            display: flex;
+        #imageFrame { 
             justify-content: center;
             align-items: center;
             width: 48%;
             border: 2px solid rgba(237, 10, 10, 0.5);
             border-radius: 5px;
+            height: 75%;
         }
 
         iframe {
@@ -388,81 +396,79 @@
         }
     }
 
-
-    function convertToJsonWithEscapedQuotes(array) {
-        const header = array[0];  // Encabezados
-        const rows = array.slice(1);  // Filas de datos
-
-        // Construir el objeto JSON con las filas de datos
-        const jsonObjects = rows.map(row => {
-            let rowObject = {};
-            header.forEach((col, index) => {
-                rowObject[col] = row[index];
-            });
-            return rowObject;
-        });
-
-        // Convertir el objeto JSON a una cadena en formato requerido con comillas escapadas
-        const jsonString = JSON.stringify(jsonObjects);
-        return jsonString.replace(/"/g, '\\"');  // Escapar las comillas
-    }
-
-    function convertArrayToJsonWithEscapedQuotes(array) {
-        const header = array[0];  // Tomamos el primer elemento como el nombre de la columna
-        const values = array.slice(1);  // Tomamos el resto de los elementos como los valores
-
-        // Crear un arreglo de objetos donde cada valor se convierte en un objeto con la clave 'Nom' y su respectivo valor
-        const jsonObjects = values.map(value => {
-            let obj = {};
-            obj[header] = value;  // Asignamos el valor a la clave 'Nom'
-            return obj;
-        });
-
-        // Convertimos el arreglo de objetos a una cadena JSON
-        const jsonString = JSON.stringify(jsonObjects);
-        
-        // Escapamos las comillas dobles en la cadena JSON y la devolvemos
-        return jsonString.replace(/"/g, '\\"');
-    }
-
-    function convertToMatrix(questionBlock){
-        let objectsVect = [ ["Numero_del_bloc", "Numero_de_pregunta", "Tipo_de_pregunta", "Pregunta", "Pregunta_abreujada", "Valores", "Abreviación_de_valores", "Puntuaciones", "Abreviación_de<_puntuaciones"]];        for (objectInfo of questionBlock){
-            objectData = []
-            for (object of objectInfo){
-                objectData.push(1); 
-                objectData.push(2); 
-                objectData.push(3); 
-                objectData.push(4); 
-                objectData.push(5); 
-                objectData.push(6); 
-                objectData.push(7); 
-                objectData.push(8); 
+    function convertArrayOfArraysToString(arr) {  
+        function processItem(item) {
+            if (Array.isArray(item)) {   
+                return `[${item[0].join(';')}]`; // Unimos los elementos internos con '/'
+            } else { 
+                return item; // Si no es un array, devolvemos el item tal cual
             }
-            objectsVect.push(objectData);
         }
-        return convertToJsonWithEscapedQuotes(objectsVect);
+
+        // Procesamos cada subarray
+        result = arr.map(subarray => {
+            return `[${subarray.map(processItem).join(',')}]`; // Procesamos cada elemento y unimos con ','
+        }).join(''); // Unimos todos los subarrays procesados
+  
+
+        return `'${result}'`; 
     }
 
-    function convertToVect(blocks){
-        objectData = ["nomBloc"];
-        for (objectInfo of blocks){
-            objectData.push(objectInfo);
+    async function getBlock(blockId) {
+        try {
+            const response = await fetch(`/get-block?id=${blockId}`);
+            
+            if (response.ok) {
+                const block = await response.json();  // Parsear la respuesta JSON
+                return block;  // Retornar el bloque obtenido
+            } else {
+            throw new Error("No se pudo obtener el bloque");
+            }
+        } catch (error) {
+            console.error("Error al obtener el bloque:", error);
+            return null;  // Retorna null en caso de error
         }
-        return convertArrayToJsonWithEscapedQuotes(objectData);
     }
 
     async function previewForm(formId) { 
         await getFormInformation(formId);
 
-        blocksData = convertToVect(blocks);
-        questionsData = convertToMatrix(questionBlock);
+        blocksData = ["nomBloc", ...blocks];
 
-        
-        console.log(blocksData);
-        console.log(questionsData);
- 
-        await executeRScript(blocksData, questionsData);
-        // await executePythonScript(formId); 
+        headers = ["Numero.de.Pregunta",
+                 "Pregunta", "Pregunta.abreujada",
+                  "Bloc", "Tipo.de.pregunta",
+                   "Valores", "Puntuaciones", 
+                   "Abreviación.de.valores", "Abreviación.de.puntuaciones"]
+                   
+        questionData = [headers];
+
+        for (block of questionBlock) { 
+            for (question of block){ 
+                data = [];
+                  
+                objectBloc =  await getBlock(question.bloc) 
+
+                data.push("1");
+                data.push(question.title);
+                data.push(question.rephrase);
+                data.push(objectBloc.block.title)
+                data.push(question.type)
+                data.push([question.respostes])
+                data.push([question.columnes])
+                data.push([question.abv_respostes])
+                data.push([question.abv_columnes])
+                questionData.push(data);
+                data = []; 
+            } 
+        }
+
+        blocksData = `'[${blocksData.join(',')}]'`
+        questionData = convertArrayOfArraysToString(questionData) 
+
+        console.log(blocksData, questionData)
+
+        await executeRScript(blocksData, questionData, formId); 
         await renderObjects();
     }
 
@@ -485,15 +491,20 @@
         }
     }
 
-    async function executeRScript(blockCSV, questionCSV) {
+    async function executeRScript(blockCSV, questionCSV, formId) {
         try {
+            console.log("Executing R script...")
             const response = await fetch('/run-r-script', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ b: blockCSV, q: questionCSV })
+                body: JSON.stringify({ b: blockCSV, q: questionCSV, formName: "A"  })
             }); 
+            if (response.ok) {
+                console.log("R script executed")
+                await executePythonScript(formId);
+            }
 
         } catch (error) {
             console.error('Error en la solicitud para ejecutar el script de R:', error);
@@ -502,20 +513,22 @@
 
     async function executePythonScript(formId) {
         try {
+            console.log("Executing python script...")
             const response = await fetch('/run-python-script', {
                 method: 'POST'
             });
 
             if (response.ok) {
                 const output = await response.text();  // Obtener la salida del script
-        
-                // Enviar la salida a la base de datos
+                console.log(output.split(' ').pop())
+         
                 const urlResponse = await fetch(`/add-url`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ formId: formId, url: output })
+                    body: JSON.stringify({ formId: formId, url: output.split(' ').pop() })
                 });
- 
+                
+                console.log("Python script executed")
             } else {
                 console.error('Error al ejecutar el script de Python'); 
             }

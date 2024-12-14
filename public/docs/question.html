@@ -233,14 +233,16 @@
         rephPregunta = document.getElementById('rephPregunta').value; 
         tipusPregunta = document.getElementById('tipusPregunta').value;
 
+        values = getInputValues() 
+
         const data = {
             pregunta,
             rephPregunta, 
             tipusPregunta,
-            respostes: getInputsValues(document.getElementById('respostesContainer')),
-            columnes: getInputsValues(document.getElementById('columnesContainer')),
-            abv_respostes: getInputsValues(document.getElementById('respostesContainer')),
-            abv_columnes: getInputsValues(document.getElementById('columnesContainer')),
+            respostes: values.resps,
+            columnes: values.cols,
+            abv_respostes: values.abv_resps,
+            abv_columnes: values.abv_cols,
         };
  
         createQuestion(data);
@@ -286,9 +288,33 @@
     }
     
 
-    function getInputsValues(container) {
-        const inputs = container.querySelectorAll('input');
-        return Array.from(inputs).map(input => input.value);
+    function getInputValues() {
+        const resps = [];
+        const abv_resps = [];
+        const cols = [];
+        const abv_cols = [];
+
+        // Extraer valores del contenedor de respuestas
+        const respostesInputs = document.querySelectorAll('#respostesContainer input');
+        for (let i = 0; i < respostesInputs.length; i += 2) {
+            if (respostesInputs[i]) resps.push(respostesInputs[i].value);
+            if (respostesInputs[i + 1]) abv_resps.push(respostesInputs[i + 1].value);
+        }
+
+        // Extraer valores del contenedor de columnas
+        const columnesInputs = document.querySelectorAll('#columnesContainer input');
+        for (let i = 0; i < columnesInputs.length; i += 2) {
+            if (columnesInputs[i]) cols.push(columnesInputs[i].value);
+            if (columnesInputs[i + 1]) abv_cols.push(columnesInputs[i + 1].value);
+        }
+
+        // Devolver los valores en un objeto
+        return {
+            resps,
+            abv_resps,
+            cols,
+            abv_cols
+        };
     }
     
     // Initial field display

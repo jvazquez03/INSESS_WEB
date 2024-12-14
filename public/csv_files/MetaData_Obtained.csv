@@ -1,2 +1,53 @@
-"headers","data"
-"[""NamesCOL"",""Eticol"",""Bloc"",""Nom_Bloc"",""Inicial_Pregunta"",""Pregunta"",""Respostes"",""Columnes"",""Rephrase"",""Colcurt"",""Object"",""PreguntaG"",""Tipus"",""PackIni"",""PackFi"",""nCols"",""nBlocs"",""TipusDescriptiva""]","[]"
+"NamesCOL","Eticol","Bloc","Nom_Bloc","Inicial_Pregunta","Pregunta","Respostes","Columnes","Rephrase","Colcurt","Object","PreguntaG","Tipus","PackIni","PackFi","nCols","nBlocs","TipusDescriptiva"
+,,1,"ASPECTES GENERALS",,,,,,,"Bloc",,,,,,,
+,,,,"1","La meva motivació per la colla...",,,"1 .Motivacio",,"Qüestio","La meva motivació per la colla...","Grid",2,8,6,,"a "
+,,,,,,"Files","Columnes",,,"Separador",,,,,,,
+2,,,,"1","La meva motivació per la colla... [Inici de temporada]","Inici de temporada","No inscrit a la colla","Inici","NoColla","Modalitat",,,,,,,
+3,,,,"1","La meva motivació per la colla... [Final 1r Tram]","Final 1r Tram","Molt baixa","Final 1r Tram","Molt baixa","Modalitat",,,,,,,
+4,,,,"1","La meva motivació per la colla... [Final 2n Tram]","Final 2n Tram","Baixa","Final 2n Tram","Baixa","Modalitat",,,,,,,
+,,,,,,,"Alta",,"Alta","Modalitat",,,,,,,
+,,,,,,,"Molt alta",,"Molt Alta","Modalitat",,,,,,,
+,,,,,,,"NS/NC",,"NS","Modalitat",,,,,,,
+,,,,"1","Implicacio general de la colla",,,"1 .Implicacio",,"Qüestio","Implicacio general de la colla","Grid",5,10,5,,"a "
+,,,,,,"Files","Columnes",,,"Separador",,,,,,,
+5,,,,"1","Implicacio general de la colla [Grau de satisfacció general amb la colla]","Grau de satisfacció general amb la colla","Molt baixa","SatisColla","Molt baixa","Modalitat",,,,,,,
+6,,,,"1","Implicacio general de la colla [Grau de satisfacció dels castells assolits aquesta temporada]","Grau de satisfacció dels castells assolits aquesta temporada","Baixa","SatisCastells","Baixa","Modalitat",,,,,,,
+,,,,,,,"Alta",,"Alta","Modalitat",,,,,,,
+,,,,,,,"Molt alta",,"Molt alta","Modalitat",,,,,,,
+,,,,,,,"NS/NC",,"NS","Modalitat",,,,,,,
+,,2,"VALORACIÓ TÈCNICA",,,,,,,"Bloc",,,,,,,
+,,,,"1","Valoració dels següents àmbits tècnics",,,"1 .Tecnica",,"Qüestio","Valoració dels següents àmbits tècnics","Grid",7,13,5,,"a "
+,,,,,,"Files","Columnes",,,"Separador",,,,,,,
+7,,,,"1","Valoració dels següents àmbits tècnics [Grau d'acord amb la tasca realitzada per els 3 caps de colla]","Grau d'acord amb la tasca realitzada per els 3 caps de colla","Molt dolenta","CdC","Molt dolenta","Modalitat",,,,,,,
+8,,,,"1","Valoració dels següents àmbits tècnics [Valoració global de l’equip tècnic]","Valoració global de l’equip tècnic","Dolenta","GLOB","Dolenta","Modalitat",,,,,,,
+9,,,,"1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de canalla]","Valoració de la tècnica de canalla","Bona","CAN","Bona","Modalitat",,,,,,,
+10,,,,"1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de tronc]","Valoració de la tècnica de tronc","Molt bona","TRO","Molt bona","Modalitat",,,,,,,
+11,,,,"1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de pinyes]","Valoració de la tècnica de pinyes","NS/NC","PINY","NS","Modalitat",,,,,,,
+12,,,,"1","Valoració dels següents àmbits tècnics [Grau de coneixement de la posició que ocupes]","Grau de coneixement de la posició que ocupes",,"Coneix",,"Modalitat",,,,,,,
+,,,,,,,,,,"Separador",,,,,,,
+13,,,,"1","Afegiries més hores a la setmana?",,,"1.HoresSetmanals",,"Qüestio",,"Simple Response",,,,,"b"
+,13,,,,,"Si",,"Si",,"Modalitat",,,,,,,
+,13,,,,,"No",,"No",,"Modalitat",,,,,,,
+,13,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
+,,3,"VALORACIÓ JUNTA",,,,,,,"Bloc",,,,,,,
+,,,,"1","Valoració dels següents àmbits",,,"1 .Junta",,"Qüestio","Valoració dels següents àmbits","Grid",14,19,5,,"a "
+,,,,,,"Files","Columnes",,,"Separador",,,,,,,
+14,,,,"1","Valoració dels següents àmbits [Valoració general de l’equip de junta]","Valoració general de l’equip de junta","Molt dolenta","Junt","Molt dolenta","Modalitat",,,,,,,
+15,,,,"1","Valoració dels següents àmbits [Grau d’acord amb la tasca realitzada per la directora]","Grau d’acord amb la tasca realitzada per la directora","Dolenta","Dir","Dolenta","Modalitat",,,,,,,
+16,,,,"1","Valoració dels següents àmbits [Utilitat de la convocatòria]","Utilitat de la convocatòria","Bona","Convo","Bona","Modalitat",,,,,,,
+17,,,,"1","Valoració dels següents àmbits [Utilitat Grup de WhatsApp INFO JOVE DE BARCELONA]","Utilitat Grup de WhatsApp INFO JOVE DE BARCELONA","Molt bona","Whats","Molt bona","Modalitat",,,,,,,
+18,,,,"1","Valoració dels següents àmbits [Grau d'acord amb la tasca realitzada per l'encarregat de Relacions Públiques]","Grau d'acord amb la tasca realitzada per l'encarregat de Relacions Públiques","NS/NC","RP","NS","Modalitat",,,,,,,
+,,,,,,,,,,"Separador",,,,,,,
+19,,,,"1","Quina xarxa social de la colla fas servir més?",,,"1.ÚsXarxa",,"Qüestio",,"Simple Response",,,,,"b"
+,19,,,,,"Facebook",,"Facebook",,"Modalitat",,,,,,,
+,19,,,,,"Twitter",,"Twitter",,"Modalitat",,,,,,,
+,19,,,,,"Instagram",,"Instagram",,"Modalitat",,,,,,,
+,19,,,,,"Tik-tok",,"Tik-tok",,"Modalitat",,,,,,,
+,19,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
+,,,,"1","Valoració dels següents àmbits",,,"1 .ValXarxes",,"Qüestio","Valoració dels següents àmbits","Grid",20,25,5,,"a "
+,,,,,,"Files","Columnes",,,"Separador",,,,,,,
+20,,,,"1","Valoració dels següents àmbits [Facebook]","Facebook","Molt dolenta","Facebook","Molt dolenta","Modalitat",,,,,,,
+21,,,,"1","Valoració dels següents àmbits [Twitter]","Twitter","Dolenta","Twitter","Dolenta","Modalitat",,,,,,,
+22,,,,"1","Valoració dels següents àmbits [Instagram]","Instagram","Bona","Instagram","Bona","Modalitat",,,,,,,
+23,,,,"1","Valoració dels següents àmbits [Tik-tok]","Tik-tok","Molt bona","Tik-tok","Molt bona","Modalitat",,,,,,,
+,,,,,,,"NS/NC",,"NS","Modalitat",,,,,,,

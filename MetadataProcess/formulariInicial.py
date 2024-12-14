@@ -1,49 +1,24 @@
 import re
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-import os
-import json
 
 import pandas as pd
-import requests
-import argparse
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning, message="Pyarrow.*")
 
  
-FORM_TITLE = 'AUTOMATIC FORM GENERATION USING GOOGLE FORMS API' 
+FORM_TITLE = 'AUTOMATIC FORM GENERATION USING GOOGLE FORMS API'
 
 SCOPES = ['https://www.googleapis.com/auth/forms', 'https://www.googleapis.com/auth/drive.file']
 DISCOVERY_DOC = "https://forms.googleapis.com/$discovery/rest?version=v1"
-
-
-def get_arguments():
-    parser = argparse.ArgumentParser(description="Generar un formulario de Google Forms a partir de un CSV")
-    parser.add_argument('--csv_file', required=True, help="Ruta al archivo CSV de entrada")
-    return parser.parse_args()
  
-url = 'https://insesshtml-40uef58o3-jvazquez03s-projects.vercel.app/api/config'  # Cambia esta URL por la de tu app en Vercel
+SERVICE_ACCOUNT_FILE = './MetadataProcess/formularitfg-1a9cc428ef00.json'
 
-response = requests.get(url)
-print(response)
-SERVICE_ACCOUNT_FILE = ''
-
-if response.status_code == 200:
-    data = response.json()
-    print("////" , data)
-    SERVICE_ACCOUNT_FILE = data.get('apiKey')
-    print(f'API Key: {SERVICE_ACCOUNT_FILE}')
-else:
-    print(f'Error: {response.status_code}')
-
-
-# Crea las credenciales a partir del diccionario
 creds = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE,
     scopes=SCOPES
 )
-
  
 forms_service = build('forms', 'v1', credentials=creds)
  
@@ -186,9 +161,8 @@ def create_new_question(preg, tipus, numericalType, respostes, columnes):
     })
 
 
- # Obtener parámetros de entrada
-args = get_arguments() 
-ruta_excel = args.csv_file
+ 
+ruta_excel = './public/csv_files/MetaData_Obtained.csv'
  
 data_frame = pd.read_csv(ruta_excel)
 respostes = []

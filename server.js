@@ -493,11 +493,12 @@ app.post('/create-csv', (req, res) => {
  
 
 app.post('/run-r-script', (req, res) => { 
-    const blocksCSV = req.body.b;
-    const questionCSV = req.body.q;
+    blocksCSV = req.body.b
+    questionCSV = req.body.q
+    formsName = req.body.formName
     const scriptPath = path.join(__dirname, 'MetadataProcess', 'MetadataExtraction_Params.R');
- 
-    const command = `Rscript ${scriptPath} ${blocksCSV} ${questionCSV}`;
+
+    const command = `Rscript ${scriptPath} "${blocksCSV}" "${questionCSV}"`; 
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
@@ -507,6 +508,27 @@ app.post('/run-r-script', (req, res) => {
         if (stderr) {
             console.error(`Error en el script de R: ${stderr}`);
             return res.status(500).send(`Error en el script de R: ${stderr}`);
+        }
+        try {
+            console.log(stdout)
+            const metadata = JSON.parse(stdout); 
+            console.log(metadata)
+ 
+            const csv = json2csv(metadata);  
+            const filePath = path.join(__dirname, 'public', 'csv_files', 'MetaData_Obtained.csv');
+
+            fs.writeFile(filePath, csv, (err) => {
+                if (err) {
+                    console.error('Error al escribir el archivo CSV: ', err);
+                    return res.status(500).send('Error al generar el archivo CSV.');
+                } 
+                
+             });
+            
+             res.status(200).json({ filePath });
+        } catch (err) {
+            console.error(`JSON parse error: ${err}`);
+            return res.status(500).send({ error: 'Error parsing R output' });
         }
     });
 });
@@ -538,16 +560,38 @@ app.post('/add-url', async (req, res) => {
 });
 
 
+app.post('/run-python-script', async (req, res) => {
+    try {
+        const scriptPath = path.join(__dirname, 'MetadataProcess', 'formulariInicial.py');
+        const command = `python ${scriptPath}`;
+
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error al ejecutar el script de Python: ${error.message}`);
+                return res.status(500).send(`Error al ejecutar el script de Python: ${error.message}`);
+            }
+            if (stderr) {
+                console.error(`Error en el script de Python: ${stderr}`);
+                return res.status(500).send(`Error en el script de Python: ${stderr}`);
+            } 
+            res.send(stdout);
+        });
+    } catch (error) {
+        console.error('Error ejecutando el script de Python:', error);
+        return res.status(500).send('Error ejecutando el script de Python');
+    }
+});
+
 // Iniciar el servidor en el puerto 3000
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
-    const appUrl = 'http://localhost:3000';
+    /* const appUrl = 'http://localhost:3000';
     exec(`start ${appUrl}`, (err, stdout, stderr) => {
         if (err) {
            console.error('Error al abrir el navegador:', err);
            return;
         }
         console.log('Navegador abierto correctamente');
-    });
+    }); */
   });
