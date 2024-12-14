@@ -444,12 +444,13 @@
         questionData = [headers];
 
         for (block of questionBlock) { 
+            let it = 1
             for (question of block){ 
                 data = [];
                   
                 objectBloc =  await getBlock(question.bloc) 
 
-                data.push("1");
+                data.push(objectBloc.block.title[0] + it);
                 data.push(question.title);
                 data.push(question.rephrase);
                 data.push(objectBloc.block.title)
@@ -460,6 +461,7 @@
                 data.push([question.abv_columnes])
                 questionData.push(data);
                 data = []; 
+                it++
             } 
         }
 

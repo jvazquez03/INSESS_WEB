@@ -191,7 +191,7 @@ if (nrow(preg) != 0) {
       respReph <- strsplit(respReph, ";")[[1]]
       
       
-      tiposDescriptiva <- "b"
+      tiposDescriptiva <- ""
       new_row <- data.frame(Inicial_Pregunta = Q_id,  Rephrase = paste0(Q_id, '.', Q_Reph), 
                             Pregunta = Q, Tipus = Q_Type, Object = "Qüestio", TipusDescriptiva = tiposDescriptiva,
                             NamesCOL = namesCol)
@@ -217,7 +217,7 @@ if (nrow(preg) != 0) {
       colCurt <- gsub("^\\[|\\]$", "", colCurt) 
       colCurt <- strsplit(colCurt, ";")[[1]] 
       
-      tiposDescriptiva <- "a "
+      tiposDescriptiva <- ""
       
       nCols <- calculate_param(Q_Type, columnes) 
       k0 <- namesCol
@@ -235,18 +235,11 @@ if (nrow(preg) != 0) {
       metadata <- create_grid_resp_df(Q_id, Q, Q_Reph, metadata, respostes, columnes, colCurt, respReph, namesCol)
     }
     
-    else if (tipos == "Numerical") { 
+    else if (Q_Type == "Numerical") { 
       respostes <- preg[i, "Valores"] 
-      respostes <- gsub("^\\[|\\]$", respostes)
-      respostes <- strsplit(respostes, ";")[[1]] 
-      
-      respReph <- preg[i, "Abreviación.de.valores"]
-      respReph <- gsub("^\\[|\\]$", respReph)
-      respReph <- strsplit(respReph, ";")[[1]]
-      
-      respVect <- paste(as.character(respostes), "-", as.character(respReph))
-      
-      tiposDescriptiva <- "b"
+      respReph <- ""
+        
+      tiposDescriptiva <- ""
       
       new_row <- data.frame(Inicial_Pregunta = Q_id,  Rephrase = paste0(Q_id, '.', Q_Reph), 
                             Pregunta = Q, Tipus = Q_Type, Object = "Qüestio", TipusDescriptiva = tiposDescriptiva,

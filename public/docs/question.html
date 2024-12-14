@@ -197,8 +197,11 @@
             `;
         } else if (tipus === 'Numerical') {
             html += `
-                <label>Valor Numérico:</label>
-                <input type="number" id="numericalValue">
+                <label>Valor Mínimo:</label>
+                <input type="text" id="minValue">
+                <br>
+                <label>Valor Máximo:</label>
+                <input type="text" id="maxValue">
             `;
         } else if (tipus === 'Open') {
             html += `
@@ -227,13 +230,48 @@
         button.parentElement.remove();
     }
 
+    function getMinMaxValues() {
+        console.log("minmax")
+        const resps = [];
+        const abv_resps = [];
+        const cols = [];
+        const abv_cols = [];
+        const minValue = document.getElementById('minValue').value;
+        const maxValue = document.getElementById('maxValue').value;
+
+        // Verificamos si los valores no están vacíos y si son números
+        if (minValue === '' || maxValue === '') {
+            alert('Por favor, ingresa ambos valores.');
+            return null;
+        }
+
+        const minNum = parseFloat(minValue);
+        const maxNum = parseFloat(maxValue);
+        resps.push(`${minNum}-${maxNum}`) 
+
+        if (isNaN(minNum) || isNaN(maxNum)) {
+            alert('Los valores deben ser números válidos.');
+            return null;
+        }
+
+        return {
+            resps,
+            abv_resps,
+            cols,
+            abv_cols
+        };
+    }
+
     // Submit button click event
     submitButton.addEventListener('click', () => {
         pregunta = document.getElementById('pregunta').value;
         rephPregunta = document.getElementById('rephPregunta').value; 
         tipusPregunta = document.getElementById('tipusPregunta').value;
 
-        values = getInputValues() 
+        if (tipusPregunta == "Numerical"){
+            values = getMinMaxValues()
+        }
+        else {values = getInputValues() }
 
         const data = {
             pregunta,

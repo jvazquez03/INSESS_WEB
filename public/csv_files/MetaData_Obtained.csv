@@ -1,120 +1,120 @@
 "NamesCOL","Eticol","Bloc","Nom_Bloc","Inicial_Pregunta","Pregunta","Respostes","Columnes","Rephrase","Colcurt","Object","PreguntaG","Tipus","PackIni","PackFi","nCols","nBlocs","TipusDescriptiva"
 ,,1,"ASPECTES GENERALS",,,,,,,"Bloc",,,,,,,
-,,,,"1","La meva motivació per la colla...",,,"1 .Motivacio",,"Qüestio","La meva motivació per la colla...","Grid",2,8,6,,"a "
+,,,,"A1","La meva motivació per la colla...",,,"A1 .Motivacio",,"Qüestio","La meva motivació per la colla...","Grid",2,8,6,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-2,,,,"1","La meva motivació per la colla... [Inici de temporada]","Inici de temporada","No inscrit a la colla","Inici","NoColla","Modalitat",,,,,,,
-3,,,,"1","La meva motivació per la colla... [Final 1r Tram]","Final 1r Tram","Molt baixa","Final 1r Tram","Molt baixa","Modalitat",,,,,,,
-4,,,,"1","La meva motivació per la colla... [Final 2n Tram]","Final 2n Tram","Baixa","Final 2n Tram","Baixa","Modalitat",,,,,,,
+2,,,,"A1","La meva motivació per la colla... [Inici de temporada]","Inici de temporada","No inscrit a la colla","Inici","NoColla","Modalitat",,,,,,,
+3,,,,"A1","La meva motivació per la colla... [Final 1r Tram]","Final 1r Tram","Molt baixa","Final 1r Tram","Molt baixa","Modalitat",,,,,,,
+4,,,,"A1","La meva motivació per la colla... [Final 2n Tram]","Final 2n Tram","Baixa","Final 2n Tram","Baixa","Modalitat",,,,,,,
 ,,,,,,,"Alta",,"Alta","Modalitat",,,,,,,
 ,,,,,,,"Molt alta",,"Molt Alta","Modalitat",,,,,,,
 ,,,,,,,"NS/NC",,"NS","Modalitat",,,,,,,
-,,,,"1","Implicacio general de la colla",,,"1 .Implicacio",,"Qüestio","Implicacio general de la colla","Grid",5,10,5,,"a "
+,,,,"A2","Implicacio general de la colla",,,"A2 .Implicacio",,"Qüestio","Implicacio general de la colla","Grid",5,10,5,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-5,,,,"1","Implicacio general de la colla [Grau de satisfacció general amb la colla]","Grau de satisfacció general amb la colla","Molt baixa","SatisColla","Molt baixa","Modalitat",,,,,,,
-6,,,,"1","Implicacio general de la colla [Grau de satisfacció dels castells assolits aquesta temporada]","Grau de satisfacció dels castells assolits aquesta temporada","Baixa","SatisCastells","Baixa","Modalitat",,,,,,,
+5,,,,"A2","Implicacio general de la colla [Grau de satisfacció general amb la colla]","Grau de satisfacció general amb la colla","Molt baixa","SatisColla","Molt baixa","Modalitat",,,,,,,
+6,,,,"A2","Implicacio general de la colla [Grau de satisfacció dels castells assolits aquesta temporada]","Grau de satisfacció dels castells assolits aquesta temporada","Baixa","SatisCastells","Baixa","Modalitat",,,,,,,
 ,,,,,,,"Alta",,"Alta","Modalitat",,,,,,,
 ,,,,,,,"Molt alta",,"Molt alta","Modalitat",,,,,,,
 ,,,,,,,"NS/NC",,"NS","Modalitat",,,,,,,
 ,,2,"VALORACIÓ TÈCNICA",,,,,,,"Bloc",,,,,,,
-,,,,"1","Valoració dels següents àmbits tècnics",,,"1 .Tecnica",,"Qüestio","Valoració dels següents àmbits tècnics","Grid",7,13,5,,"a "
+,,,,"V1","Valoració dels següents àmbits tècnics",,,"V1 .Tecnica",,"Qüestio","Valoració dels següents àmbits tècnics","Grid",7,13,5,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-7,,,,"1","Valoració dels següents àmbits tècnics [Grau d'acord amb la tasca realitzada per els 3 caps de colla]","Grau d'acord amb la tasca realitzada per els 3 caps de colla","Molt dolenta","CdC","Molt dolenta","Modalitat",,,,,,,
-8,,,,"1","Valoració dels següents àmbits tècnics [Valoració global de l’equip tècnic]","Valoració global de l’equip tècnic","Dolenta","GLOB","Dolenta","Modalitat",,,,,,,
-9,,,,"1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de canalla]","Valoració de la tècnica de canalla","Bona","CAN","Bona","Modalitat",,,,,,,
-10,,,,"1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de tronc]","Valoració de la tècnica de tronc","Molt bona","TRO","Molt bona","Modalitat",,,,,,,
-11,,,,"1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de pinyes]","Valoració de la tècnica de pinyes","NS/NC","PINY","NS","Modalitat",,,,,,,
-12,,,,"1","Valoració dels següents àmbits tècnics [Grau de coneixement de la posició que ocupes]","Grau de coneixement de la posició que ocupes",,"Coneix",,"Modalitat",,,,,,,
+7,,,,"V1","Valoració dels següents àmbits tècnics [Grau d'acord amb la tasca realitzada per els 3 caps de colla]","Grau d'acord amb la tasca realitzada per els 3 caps de colla","Molt dolenta","CdC","Molt dolenta","Modalitat",,,,,,,
+8,,,,"V1","Valoració dels següents àmbits tècnics [Valoració global de l’equip tècnic]","Valoració global de l’equip tècnic","Dolenta","GLOB","Dolenta","Modalitat",,,,,,,
+9,,,,"V1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de canalla]","Valoració de la tècnica de canalla","Bona","CAN","Bona","Modalitat",,,,,,,
+10,,,,"V1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de tronc]","Valoració de la tècnica de tronc","Molt bona","TRO","Molt bona","Modalitat",,,,,,,
+11,,,,"V1","Valoració dels següents àmbits tècnics [Valoració de la tècnica de pinyes]","Valoració de la tècnica de pinyes","NS/NC","PINY","NS","Modalitat",,,,,,,
+12,,,,"V1","Valoració dels següents àmbits tècnics [Grau de coneixement de la posició que ocupes]","Grau de coneixement de la posició que ocupes",,"Coneix",,"Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-13,,,,"1","Afegiries més hores a la setmana?",,,"1.HoresSetmanals",,"Qüestio",,"Simple Response",,,,,"b"
+13,,,,"V2","Afegiries més hores a la setmana?",,,"V2.HoresSetmanals",,"Qüestio",,"Simple Response",,,,,""
 ,13,,,,,"Si",,"Si",,"Modalitat",,,,,,,
 ,13,,,,,"No",,"No",,"Modalitat",,,,,,,
 ,13,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
 ,,3,"VALORACIÓ JUNTA",,,,,,,"Bloc",,,,,,,
-,,,,"1","Valoració dels següents àmbits",,,"1 .Junta",,"Qüestio","Valoració dels següents àmbits","Grid",14,19,5,,"a "
+,,,,"V1","Valoració dels següents àmbits",,,"V1 .Junta",,"Qüestio","Valoració dels següents àmbits","Grid",14,19,5,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-14,,,,"1","Valoració dels següents àmbits [Valoració general de l’equip de junta]","Valoració general de l’equip de junta","Molt dolenta","Junt","Molt dolenta","Modalitat",,,,,,,
-15,,,,"1","Valoració dels següents àmbits [Grau d’acord amb la tasca realitzada per la directora]","Grau d’acord amb la tasca realitzada per la directora","Dolenta","Dir","Dolenta","Modalitat",,,,,,,
-16,,,,"1","Valoració dels següents àmbits [Utilitat de la convocatòria]","Utilitat de la convocatòria","Bona","Convo","Bona","Modalitat",,,,,,,
-17,,,,"1","Valoració dels següents àmbits [Utilitat Grup de WhatsApp INFO JOVE DE BARCELONA]","Utilitat Grup de WhatsApp INFO JOVE DE BARCELONA","Molt bona","Whats","Molt bona","Modalitat",,,,,,,
-18,,,,"1","Valoració dels següents àmbits [Grau d'acord amb la tasca realitzada per l'encarregat de Relacions Públiques]","Grau d'acord amb la tasca realitzada per l'encarregat de Relacions Públiques","NS/NC","RP","NS","Modalitat",,,,,,,
+14,,,,"V1","Valoració dels següents àmbits [Valoració general de l’equip de junta]","Valoració general de l’equip de junta","Molt dolenta","Junt","Molt dolenta","Modalitat",,,,,,,
+15,,,,"V1","Valoració dels següents àmbits [Grau d’acord amb la tasca realitzada per la directora]","Grau d’acord amb la tasca realitzada per la directora","Dolenta","Dir","Dolenta","Modalitat",,,,,,,
+16,,,,"V1","Valoració dels següents àmbits [Utilitat de la convocatòria]","Utilitat de la convocatòria","Bona","Convo","Bona","Modalitat",,,,,,,
+17,,,,"V1","Valoració dels següents àmbits [Utilitat Grup de WhatsApp INFO JOVE DE BARCELONA]","Utilitat Grup de WhatsApp INFO JOVE DE BARCELONA","Molt bona","Whats","Molt bona","Modalitat",,,,,,,
+18,,,,"V1","Valoració dels següents àmbits [Grau d'acord amb la tasca realitzada per l'encarregat de Relacions Públiques]","Grau d'acord amb la tasca realitzada per l'encarregat de Relacions Públiques","NS/NC","RP","NS","Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-19,,,,"1","Quina xarxa social de la colla fas servir més?",,,"1.ÚsXarxa",,"Qüestio",,"Simple Response",,,,,"b"
+19,,,,"V2","Quina xarxa social de la colla fas servir més?",,,"V2.ÚsXarxa",,"Qüestio",,"Simple Response",,,,,""
 ,19,,,,,"Facebook",,"Facebook",,"Modalitat",,,,,,,
 ,19,,,,,"Twitter",,"Twitter",,"Modalitat",,,,,,,
 ,19,,,,,"Instagram",,"Instagram",,"Modalitat",,,,,,,
 ,19,,,,,"Tik-tok",,"Tik-tok",,"Modalitat",,,,,,,
 ,19,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
-,,,,"1","Valoració dels següents àmbits",,,"1 .ValXarxes",,"Qüestio","Valoració dels següents àmbits","Grid",20,25,5,,"a "
+,,,,"V3","Valoració dels següents àmbits",,,"V3 .ValXarxes",,"Qüestio","Valoració dels següents àmbits","Grid",20,25,5,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-20,,,,"1","Valoració dels següents àmbits [Facebook]","Facebook","Molt dolenta","Facebook","Molt dolenta","Modalitat",,,,,,,
-21,,,,"1","Valoració dels següents àmbits [Twitter]","Twitter","Dolenta","Twitter","Dolenta","Modalitat",,,,,,,
-22,,,,"1","Valoració dels següents àmbits [Instagram]","Instagram","Bona","Instagram","Bona","Modalitat",,,,,,,
-23,,,,"1","Valoració dels següents àmbits [Tik-tok]","Tik-tok","Molt bona","Tik-tok","Molt bona","Modalitat",,,,,,,
+20,,,,"V3","Valoració dels següents àmbits [Facebook]","Facebook","Molt dolenta","Facebook","Molt dolenta","Modalitat",,,,,,,
+21,,,,"V3","Valoració dels següents àmbits [Twitter]","Twitter","Dolenta","Twitter","Dolenta","Modalitat",,,,,,,
+22,,,,"V3","Valoració dels següents àmbits [Instagram]","Instagram","Bona","Instagram","Bona","Modalitat",,,,,,,
+23,,,,"V3","Valoració dels següents àmbits [Tik-tok]","Tik-tok","Molt bona","Tik-tok","Molt bona","Modalitat",,,,,,,
 ,,,,,,,"NS/NC",,"NS","Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-24,,,,"1","Seguies les xarxes socials de la colla abans de ser casteller a de la JBCN.",,,"1.JBCN",,"Qüestio",,"Simple Response",,,,,"b"
+24,,,,"V4","Seguies les xarxes socials de la colla abans de ser casteller a de la JBCN.",,,"V4.JBCN",,"Qüestio",,"Simple Response",,,,,""
 ,24,,,,,"Si",,"Si",,"Modalitat",,,,,,,
 ,24,,,,,"No",,"No",,"Modalitat",,,,,,,
 ,24,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
 ,,4,"VALORACIÓ GENERAL DE LES COMISSIONS",,,,,,,"Bloc",,,,,,,
-,,,,"1","Valoració de les següents comissions",,,"1 .Comissions",,"Qüestio","Valoració de les següents comissions","Grid",25,36,5,,"a "
+,,,,"V1","Valoració de les següents comissions",,,"V1 .Comissions",,"Qüestio","Valoració de les següents comissions","Grid",25,36,5,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-25,,,,"1","Valoració de les següents comissions [Acció Positiva]","Acció Positiva","Molt dolenta","CAP","Molt dolenta","Modalitat",,,,,,,
-26,,,,"1","Valoració de les següents comissions [Activitats]","Activitats","Dolenta","Activ","Dolenta","Modalitat",,,,,,,
-27,,,,"1","Valoració de les següents comissions [Adolescents]","Adolescents","Bona","Adolesc","Bona","Modalitat",,,,,,,
-28,,,,"1","Valoració de les següents comissions [Autocars]","Autocars","Molt bona","Autocars","Molt bona","Modalitat",,,,,,,
-29,,,,"1","Valoració de les següents comissions [Benvinguda]","Benvinguda","NS/NC","Benvinguda","NS","Modalitat",,,,,,,
-30,,,,"1","Valoració de les següents comissions [El Galliner]","El Galliner",,"Galliner",,"Modalitat",,,,,,,
-31,,,,"1","Valoració de les següents comissions [Local]","Local",,"Local",,"Modalitat",,,,,,,
-32,,,,"1","Valoració de les següents comissions [Marxandatge i Paradeta]","Marxandatge i Paradeta",,"Marx",,"Modalitat",,,,,,,
-33,,,,"1","Valoració de les següents comissions [Músics]","Músics",,"Músics",,"Modalitat",,,,,,,
-34,,,,"1","Valoració de les següents comissions [Punt Lila]","Punt Lila",,"Plila",,"Modalitat",,,,,,,
-35,,,,"1","Valoració de les següents comissions [Sostenibilitat]","Sostenibilitat",,"Soste",,"Modalitat",,,,,,,
-,,,,"1","Quina activitat t’agradaria fer a la colla que mai s’hagi fet?",,,"1 .Activitats",,"Qüestio","Quina activitat t’agradaria fer a la colla que mai s’hagi fet?","Open",,,,,"NA"
-,,,,"1","Valoració de les activitats",,,"1 .Activitats",,"Qüestio","Valoració de les activitats","Grid",36,46,5,,"a "
+25,,,,"V1","Valoració de les següents comissions [Acció Positiva]","Acció Positiva","Molt dolenta","CAP","Molt dolenta","Modalitat",,,,,,,
+26,,,,"V1","Valoració de les següents comissions [Activitats]","Activitats","Dolenta","Activ","Dolenta","Modalitat",,,,,,,
+27,,,,"V1","Valoració de les següents comissions [Adolescents]","Adolescents","Bona","Adolesc","Bona","Modalitat",,,,,,,
+28,,,,"V1","Valoració de les següents comissions [Autocars]","Autocars","Molt bona","Autocars","Molt bona","Modalitat",,,,,,,
+29,,,,"V1","Valoració de les següents comissions [Benvinguda]","Benvinguda","NS/NC","Benvinguda","NS","Modalitat",,,,,,,
+30,,,,"V1","Valoració de les següents comissions [El Galliner]","El Galliner",,"Galliner",,"Modalitat",,,,,,,
+31,,,,"V1","Valoració de les següents comissions [Local]","Local",,"Local",,"Modalitat",,,,,,,
+32,,,,"V1","Valoració de les següents comissions [Marxandatge i Paradeta]","Marxandatge i Paradeta",,"Marx",,"Modalitat",,,,,,,
+33,,,,"V1","Valoració de les següents comissions [Músics]","Músics",,"Músics",,"Modalitat",,,,,,,
+34,,,,"V1","Valoració de les següents comissions [Punt Lila]","Punt Lila",,"Plila",,"Modalitat",,,,,,,
+35,,,,"V1","Valoració de les següents comissions [Sostenibilitat]","Sostenibilitat",,"Soste",,"Modalitat",,,,,,,
+,,,,"V2","Quina activitat t’agradaria fer a la colla que mai s’hagi fet?",,,"V2 .Activitats",,"Qüestio","Quina activitat t’agradaria fer a la colla que mai s’hagi fet?","Open",,,,,"NA"
+,,,,"V3","Valoració de les activitats",,,"V3 .Activitats",,"Qüestio","Valoració de les activitats","Grid",36,46,5,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-36,,,,"1","Valoració de les activitats [Carlestoltes]","Carlestoltes","Molt dolenta","Carlestoltes","Molt dolenta","Modalitat",,,,,,,
-37,,,,"1","Valoració de les activitats [St. Patrick]","St. Patrick","Dolenta","Spatrics","Dolenta","Modalitat",,,,,,,
-38,,,,"1","Valoració de les activitats [Festa Punk]","Festa Punk","Bona ","Punki","Bona","Modalitat",,,,,,,
-39,,,,"1","Valoració de les activitats [Birranca]","Birranca","Molt bona","Birranca","Molt bona","Modalitat",,,,,,,
-40,,,,"1","Valoració de les activitats [Karaoke]","Karaoke","NS/NC","Karaoke","NS","Modalitat",,,,,,,
-41,,,,"1","Valoració de les activitats [Eurovisió]","Eurovisió",,"Eurovisió",,"Modalitat",,,,,,,
-42,,,,"1","Valoració de les activitats [Vermut musical]","Vermut musical",,"Vmusical",,"Modalitat",,,,,,,
-43,,,,"1","Valoració de les activitats [Festa eivissenca]","Festa eivissenca",,"Feivissenca",,"Modalitat",,,,,,,
-44,,,,"1","Valoració de les activitats [Dinar d'estiu]","Dinar d'estiu",,"Destiu",,"Modalitat",,,,,,,
-45,,,,"1","Valoració de les activitats [Oktoberfest]","Oktoberfest",,"Oktoberfest",,"Modalitat",,,,,,,
+36,,,,"V3","Valoració de les activitats [Carlestoltes]","Carlestoltes","Molt dolenta","Carlestoltes","Molt dolenta","Modalitat",,,,,,,
+37,,,,"V3","Valoració de les activitats [St. Patrick]","St. Patrick","Dolenta","Spatrics","Dolenta","Modalitat",,,,,,,
+38,,,,"V3","Valoració de les activitats [Festa Punk]","Festa Punk","Bona ","Punki","Bona","Modalitat",,,,,,,
+39,,,,"V3","Valoració de les activitats [Birranca]","Birranca","Molt bona","Birranca","Molt bona","Modalitat",,,,,,,
+40,,,,"V3","Valoració de les activitats [Karaoke]","Karaoke","NS/NC","Karaoke","NS","Modalitat",,,,,,,
+41,,,,"V3","Valoració de les activitats [Eurovisió]","Eurovisió",,"Eurovisió",,"Modalitat",,,,,,,
+42,,,,"V3","Valoració de les activitats [Vermut musical]","Vermut musical",,"Vmusical",,"Modalitat",,,,,,,
+43,,,,"V3","Valoració de les activitats [Festa eivissenca]","Festa eivissenca",,"Feivissenca",,"Modalitat",,,,,,,
+44,,,,"V3","Valoració de les activitats [Dinar d'estiu]","Dinar d'estiu",,"Destiu",,"Modalitat",,,,,,,
+45,,,,"V3","Valoració de les activitats [Oktoberfest]","Oktoberfest",,"Oktoberfest",,"Modalitat",,,,,,,
 ,,5,"VALORACIÓ MÚSICS",,,,,,,"Bloc",,,,,,,
-,,,,"1","Des del meu punt de vista... el número òptim de músics a les diades és de",,,"1 .Musics",,"Qüestio","Des del meu punt de vista... el número òptim de músics a les diades és de","Open",,,,,"NA"
+,,,,"V1","Des del meu punt de vista... el número òptim de músics a les diades és de",,,"V1 .Musics",,"Qüestio","Des del meu punt de vista... el número òptim de músics a les diades és de","Open",,,,,"NA"
 ,,,,,,,,,,"Separador",,,,,,,
-46,,,,"1","El toc de castell, per mi és... ",,,"1.TocCastells",,"Qüestio",,"Simple Response",,,,,"b"
+46,,,,"V2","El toc de castell, per mi és... ",,,"V2.TocCastells",,"Qüestio",,"Simple Response",,,,,""
 ,46,,,,,"Molt Bo",,"MoltBo",,"Modalitat",,,,,,,
 ,46,,,,,"Bo",,"Bo",,"Modalitat",,,,,,,
 ,46,,,,,"Dolent",,"Dolent",,"Modalitat",,,,,,,
 ,46,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-47,,,,"1","La música que sona un cop acabada la diada...",,,"1.FiDiada",,"Qüestio",,"Simple Response",,,,,"b"
+47,,,,"V3","La música que sona un cop acabada la diada...",,,"V3.FiDiada",,"Qüestio",,"Simple Response",,,,,""
 ,47,,,,,"És massa llarga",,"Llarga",,"Modalitat",,,,,,,
 ,47,,,,,"És massa curta",,"Curta",,"Modalitat",,,,,,,
 ,47,,,,,"Té una durada òptima",,"Doptima",,"Modalitat",,,,,,,
 ,47,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-48,,,,"1","En relació a les matinades, penso que.",,,"1.Matinades",,"Qüestio",,"Simple Response",,,,,"b"
+48,,,,"V4","En relació a les matinades, penso que.",,,"V4.Matinades",,"Qüestio",,"Simple Response",,,,,""
 ,48,,,,,"No crec que sigui necessaria la participació de cap membre de la colla a les matinades",,"NoNecesaria",,"Modalitat",,,,,,,
 ,48,,,,,"És una activitat per les persones que formen part de músics, m'agrada que assisteixin en representació de la colla",,"ActMusics",,"Modalitat",,,,,,,
 ,48,,,,,"És una activitat principalment per als músics, però penso que totes les persones de la colla podrien assistir-hi si volen",,"MusicsAltres",,"Modalitat",,,,,,,
 ,48,,,,,"És una activitat per tothom. S'hauria de convocar per a les matinades de la mateixa manera que es convoca per a una diada",,"Tothom",,"Modalitat",,,,,,,
 ,48,,,,,"NS/NC",,"NS",,"Modalitat",,,,,,,
-,,,,"1","Resposta Oberta",,,"1 .RespOberta",,"Qüestio","Resposta Oberta","Open",,,,,"NA"
+,,,,"V5","Resposta Oberta",,,"V5 .RespOberta",,"Qüestio","Resposta Oberta","Open",,,,,"NA"
 ,,6,"PREGUNTES DE CONTROL ESTADÍSTIC",,,,,,,"Bloc",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-49,,,,"1","Quan vas entrar a la colla?",,,"1.Inscripcio",,"Qüestio",,"Simple Response",,,,,"b"
+49,,,,"P1","Quan vas entrar a la colla?",,,"P1.Inscripcio",,"Qüestio",,"Simple Response",,,,,""
 ,49,,,,,"a) Abans del 2015",,"Abans2015",,"Modalitat",,,,,,,
 ,49,,,,,"b) 2015 - 2018",,"2015-2018",,"Modalitat",,,,,,,
 ,49,,,,,"c) 2018 - 2020",,"2018-2020",,"Modalitat",,,,,,,
 ,49,,,,,"d) 2021 - 2022",,"2021-2022",,"Modalitat",,,,,,,
 ,49,,,,,"e) 2023",,"2023",,"Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-50,,,,"1","Com has conegut la colla?",,,"1.Conegut",,"Qüestio",,"Simple Response",,,,,"b"
+50,,,,"P2","Com has conegut la colla?",,,"P2.Conegut",,"Qüestio",,"Simple Response",,,,,""
 ,50,,,,,"M'ha parlat una amistat",,"Amistat",,"Modalitat",,,,,,,
 ,50,,,,,"Xarxes Socials",,"XarxesSocials",,"Modalitat",,,,,,,
 ,50,,,,,"Pàgina web",,"Web",,"Modalitat",,,,,,,
@@ -122,16 +122,18 @@
 ,50,,,,,"Un taller que es va realitzar a l'escola de la meu fill/a",,"Taller",,"Modalitat",,,,,,,
 ,50,,,,,"Altres",,"Altres",,"Modalitat",,,,,,,
 ,,,,,,,,,,"Separador",,,,,,,
-51,,,,"1","Edat",,,"1.Edat",,"Qüestio",,"Simple Response",,,,,"b"
+51,,,,"P3","Edat",,,"P3.Edat",,"Qüestio",,"Simple Response",,,,,""
 ,51,,,,,"12-17",,"12-17",,"Modalitat",,,,,,,
 ,51,,,,,"18-29",,"18-29",,"Modalitat",,,,,,,
 ,51,,,,,"30-39",,"30-39",,"Modalitat",,,,,,,
 ,51,,,,,"40-49",,"40-49",,"Modalitat",,,,,,,
 ,51,,,,,"Més de 50",,"Més de 50",,"Modalitat",,,,,,,
-,,,,"1","Col·lectius als que formes part",,,"1 .Colectius",,"Qüestio","Col·lectius als que formes part","Grid",52,55,2,,"a "
+,,,,"P4","Col·lectius als que formes part",,,"P4 .Colectius",,"Qüestio","Col·lectius als que formes part","Grid",52,55,2,,""
 ,,,,,,"Files","Columnes",,,"Separador",,,,,,,
-52,,,,"1","Col·lectius als que formes part [Formes part de la tècnica?]","Formes part de la tècnica?","Si","Tecnica","Si","Modalitat",,,,,,,
-53,,,,"1","Col·lectius als que formes part [Formes part d’alguna comissió?]","Formes part d’alguna comissió?","No","Comissio","No","Modalitat",,,,,,,
-54,,,,"1","Col·lectius als que formes part [Ets pare/mare de canalla?]","Ets pare/mare de canalla?",,"TeCanalla",,"Modalitat",,,,,,,
+52,,,,"P4","Col·lectius als que formes part [Formes part de la tècnica?]","Formes part de la tècnica?","Si","Tecnica","Si","Modalitat",,,,,,,
+53,,,,"P4","Col·lectius als que formes part [Formes part d’alguna comissió?]","Formes part d’alguna comissió?","No","Comissio","No","Modalitat",,,,,,,
+54,,,,"P4","Col·lectius als que formes part [Ets pare/mare de canalla?]","Ets pare/mare de canalla?",,"TeCanalla",,"Modalitat",,,,,,,
 ,,7,"SEGURETAT INFORMÀTICA",,,,,,,"Bloc",,,,,,,
-,,,,"1","Dia i hora que s'esta responent l'enquesta",,,"1 .Seguretat",,"Qüestio","Dia i hora que s'esta responent l'enquesta","Open",,,,,"NA"
+,,,,"S1","Dia i hora que s'esta responent l'enquesta",,,"S1 .Seguretat",,"Qüestio","Dia i hora que s'esta responent l'enquesta","Open",,,,,"NA"
+55,,,,"S2","Quina nota donaries a la enquesta?",,,"S2.evalEnq",,"Qüestio",,"Numerical",,,,,""
+,55,,,,,"[1-10]",,"",,"Modalitat",,,,,,,
