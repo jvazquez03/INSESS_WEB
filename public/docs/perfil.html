@@ -119,7 +119,7 @@
             height: 75%;
         }
 
-        iframe {
+        iframe { 
             width: 100%;
             height: 100%;
             border: none;
@@ -407,7 +407,7 @@
 
         // Procesamos cada subarray
         result = arr.map(subarray => {
-            return `[${subarray.map(processItem).join(',')}]`; // Procesamos cada elemento y unimos con ','
+            return `[${subarray.map(processItem).join('#')}]`; // Procesamos cada elemento y unimos con ','
         }).join(''); // Unimos todos los subarrays procesados
   
 
@@ -464,9 +464,7 @@
         }
 
         blocksData = `'[${blocksData.join(',')}]'`
-        questionData = convertArrayOfArraysToString(questionData) 
-
-        console.log(blocksData, questionData)
+        questionData = convertArrayOfArraysToString(questionData)  
 
         await executeRScript(blocksData, questionData, formId); 
         await renderObjects();

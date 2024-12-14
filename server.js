@@ -498,7 +498,17 @@ app.post('/run-r-script', (req, res) => {
     formsName = req.body.formName
     const scriptPath = path.join(__dirname, 'MetadataProcess', 'MetadataExtraction_Params.R');
 
-    const command = `Rscript ${scriptPath} "${blocksCSV}" "${questionCSV}"`; 
+    questionsFilePath = path.join(__dirname, 'public', 'csv_files', 'questions.txt');
+    questionsFilePath =  questionsFilePath.replace(/\\/g, "/");
+    
+    fs.writeFile(questionsFilePath, questionCSV, (err) => {
+        if (err) {
+            console.error('Error al escribir el archivo questions.txt: ', err);
+            return res.status(500).send('Error al guardar el archivo questions.txt');
+        }
+    });
+
+    const command = `Rscript ${scriptPath} "${blocksCSV}" "${questionsFilePath}"`; 
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
@@ -509,10 +519,8 @@ app.post('/run-r-script', (req, res) => {
             console.error(`Error en el script de R: ${stderr}`);
             return res.status(500).send(`Error en el script de R: ${stderr}`);
         }
-        try {
-            console.log(stdout)
+        try { 
             const metadata = JSON.parse(stdout); 
-            console.log(metadata)
  
             const csv = json2csv(metadata);  
             const filePath = path.join(__dirname, 'public', 'csv_files', 'MetaData_Obtained.csv');

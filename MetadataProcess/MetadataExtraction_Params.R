@@ -15,38 +15,36 @@ data_values <- blocs[-1]
 blocs <- data.frame(data_values, stringsAsFactors = FALSE)
 colnames(blocs) <- column_titles  
   
-preg <- args[2]
+file_path <- args[2]
+preg <- scan(file_path, what = "character", sep = "\n", quiet = TRUE)  
 preg <- gsub("^'|'$", "", preg) 
 preg <- gsub("^\\[|\\]$", "", preg)
 preg <- strsplit(preg, "\\]\\[", perl = TRUE)[[1]]
-
-# Procesar nombres de columnas
-columns <- gsub("\\[|\\]", "", preg[1])
-column_names <- strsplit(columns, ",")[[1]] 
-
-# Procesar filas (si existen)
-rows <- preg[-1]
-if (length(rows) > 0) {
-  rows <- lapply(rows, function(row) {
-    strsplit(row, ",(?=(?:[^\\[]*\\[|\\w))", perl = TRUE)[[1]]
-  }) 
-  
-  # Verificar que todas las filas tengan la misma longitud que las columnas
-  lengths <- sapply(rows, length)
-  if (any(lengths != length(column_names))) { 
-    stop("El número de columnas en las filas no coincide con el número de nombres de columna")
-  }
-  
-  # Construir dataframe con filas
-  preg <- as.data.frame(do.call(rbind, rows), stringsAsFactors = FALSE)
-} else {
-  # Crear dataframe vacío si no hay filas
-  preg <- as.data.frame(matrix(ncol = length(column_names), nrow = 0))
-}
  
+columns <- gsub("\\[|\\]", "", preg[1])
+column_names <- strsplit(columns, "#")[[1]] 
 
-# Asignar nombres de columnas
-colnames(preg) <- column_names 
+ 
+rows <- preg[-1] 
+if (length(rows) > 0) {
+  rows <- lapply(rows, function(row) { 
+    row <- gsub("\\[([^]]*)\\]", "TEMP_MARKER_\\1_TEMP_MARKER", row)
+    row <- strsplit(row, "#")[[1]] 
+    row <- gsub("TEMP_MARKER_(.*?)_TEMP_MARKER", "[\\1]", row)
+    return(row)
+  }) 
+   
+  lengths <- sapply(rows, length)
+  if (any(lengths != length(column_names))) {  
+    stop("El numero de columnas en las filas no coincide con el numero de nombres de columna", lengths, length(column_names))
+  }
+   
+  preg <- as.data.frame(do.call(rbind, rows), stringsAsFactors = FALSE)
+} else { 
+  preg <- as.data.frame(matrix(ncol = length(column_names), nrow = 0))
+} 
+ 
+colnames(preg) <- column_names  
  
   
 metadata <- data.frame(NamesCOL = numeric(),
@@ -155,7 +153,7 @@ actBloc <- -1
 namesCol <- 2
 k0 <- -1
 kf <- -1
-
+ 
 if (nrow(preg) != 0) {
   for (i in 1:nrow(preg)) {
     
@@ -165,7 +163,7 @@ if (nrow(preg) != 0) {
     Q_Type <- preg[i, "Tipo.de.pregunta"]
     Q_id <- preg[i, "Numero.de.Pregunta"]
     numBloc <- diccionario[[B]]
-    
+     
     if (numBloc != actBloc){
       new_row <- data.frame(Bloc = numBloc, Nom_Bloc = B, Object = "Bloc")
       metadata <- new_data_row(metadata, new_row)
@@ -188,7 +186,7 @@ if (nrow(preg) != 0) {
       respostes <- gsub("^\\[|\\]$", "", respostes)
       respostes <- strsplit(respostes, ";")[[1]] 
       
-      respReph <- preg[i, "Abreviación.de.valores"]
+      respReph <- preg[i, "Abreviación.de.valores"] 
       respReph <- gsub("^\\[|\\]$", "", respReph)
       respReph <- strsplit(respReph, ";")[[1]]
       
@@ -211,13 +209,13 @@ if (nrow(preg) != 0) {
       columnes <- gsub("^\\[|\\]$", "", columnes)
       columnes <- strsplit(columnes, ";")[[1]]
       
-      respReph <- preg[i, "Abreviación.de.valores"]
+      respReph <- preg[i, "Abreviación.de.valores"] 
       respReph <- gsub("^\\[|\\]$", "", respReph)
       respReph <- strsplit(respReph, ";")[[1]]
       
-      colCurt <- preg[i, "Abreviación.de.puntuaciones"] 
-      colCurt <- gsub("^\\[|\\]$", "", colCurt)
-      colCurt <- strsplit(colCurt, ";")[[1]]
+      colCurt <- preg[i, "Abreviación.de.puntuaciones"]  
+      colCurt <- gsub("^\\[|\\]$", "", colCurt) 
+      colCurt <- strsplit(colCurt, ";")[[1]] 
       
       tiposDescriptiva <- "a "
       
