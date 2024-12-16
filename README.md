@@ -15,7 +15,7 @@ Para clonar este repositorio, primero asegúrate de tener Git instalado. Para ve
 
 Una vez tengas git instalado, navega hasta el directorio local i abre un terminal en este. Una vez tengas el terminal abierto, ejecuta:
 
-      git clone https://github.com/usuario/repositorio.git
+      git clone https://github.com/jvazquez03/INSESS_WEB.git
 
 El siguiente paso es instalar las dependencias. Para hacerlo navega hasta el repositorio clonado y ejecuta:
 
